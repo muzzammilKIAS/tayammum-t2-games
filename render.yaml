@@ -8,3 +8,19 @@ services:
     buildCommand: npm ci --include=dev && npm run build
     startCommand: node server.js
     healthCheckPath: /
+
+  # Mod kelas langsung Pengembaraan Tayammum (mario/): pelayan WebSocket Dart.
+  # Bilik disimpan dalam memori sahaja. Konteks binaan ialah mario/ supaya
+  # packages/game_shared boleh disalin. URL lalai dalam klien:
+  # wss://tayammum-mario-server.onrender.com/ws
+  - type: web
+    name: tayammum-mario-server
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: mario/server/Dockerfile
+    dockerContext: mario
+    envVars:
+      - key: PORT
+        value: 8080
+    healthCheckPath: /healthz

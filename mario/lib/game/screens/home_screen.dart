@@ -77,9 +77,28 @@ class AdventureHomeScreen extends StatelessWidget {
                       context,
                       width,
                       Icons.explore_outlined,
-                      'MULAKAN PENGEMBARAAN',
+                      'MAIN SENDIRI',
                       'Pilih perantau dan mulakan tahap mengikut keperluan anda.',
                       '/game/solo',
+                      action: 'Main sendiri →',
+                    ),
+                    _mode(
+                      context,
+                      width,
+                      Icons.cast_for_education_outlined,
+                      'MOD KELAS (GURU)',
+                      'Paparkan perlumbaan langsung di projektor. Pelajar menyertai dengan kod atau QR.',
+                      '/game/host',
+                      action: 'Buka bilik kelas →',
+                    ),
+                    _mode(
+                      context,
+                      width,
+                      Icons.qr_code_scanner_outlined,
+                      'SERTAI DENGAN KOD',
+                      'Pelajar: masukkan kod bilik daripada guru dan sertai perlumbaan kelas.',
+                      '/game/join',
+                      action: 'Masukkan kod →',
                     ),
                   ],
                 );
@@ -113,6 +132,7 @@ class AdventureHomeScreen extends StatelessWidget {
     String description,
     String? route, {
     VoidCallback? onTap,
+    String action = 'Jom mula →',
   }) => SizedBox(
     width: width,
     child: AdventureCard(
@@ -133,7 +153,7 @@ class AdventureHomeScreen extends StatelessWidget {
           const SizedBox(height: 20),
           FilledButton(
             onPressed: onTap ?? () => Navigator.pushNamed(context, route!),
-            child: const Text('Jom mula →'),
+            child: Text(action),
           ),
         ],
       ),

@@ -117,7 +117,7 @@ class RacePlayer {
     final m = jsonMap(raw);
     return RacePlayer(
       id: id,
-      nickname: m['nickname'] as String? ?? 'Student',
+      nickname: m['nickname'] as String? ?? 'Pelajar',
       avatar: (m['avatar'] as num?)?.toInt() ?? 0,
       round: (m['round'] as num?)?.toInt() ?? 0,
       connected: m['connected'] == true,
@@ -180,12 +180,17 @@ int comparePlayers(RacePlayer a, RacePlayer b) {
   return time != 0 ? time : a.id.compareTo(b.id);
 }
 
-String joinUrl(Uri base, String code) => Uri(
+/// Pautan sertai berdasarkan alamat sebenar halaman (selamat untuk sub-laluan
+/// GitHub Pages dan laluan hash). [server] hanya disertakan jika URL pelayan
+/// ditimpa pada masa jalan, supaya telefon pelajar memakai pelayan yang sama.
+String joinUrl(Uri base, String code, {String? server}) => Uri(
   scheme: base.scheme,
   host: base.host,
   port: base.hasPort ? base.port : null,
   path: base.path,
-  fragment: '/game/join?room=${Uri.encodeComponent(code)}',
+  fragment:
+      '/game/join?room=${Uri.encodeComponent(code)}'
+      '${server == null || server.isEmpty ? '' : '&server=${Uri.encodeComponent(server)}'}',
 ).toString();
 String formatTime(int ms) =>
     '${ms ~/ 60000}:${(ms ~/ 1000 % 60).toString().padLeft(2, '0')}';

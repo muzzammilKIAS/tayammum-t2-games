@@ -24,12 +24,14 @@ class RoomEngine {
     int avatar,
     int now,
   ) {
-    if (raw.isEmpty) throw StateError('Room not found. Check the code.');
+    if (raw.isEmpty) {
+      throw StateError('Bilik tidak ditemui. Semak semula kod bilik.');
+    }
     final room = RaceRoom.fromJson(code, raw);
-    if (room.expiresAt < now) throw StateError('This room has expired.');
+    if (room.expiresAt < now) throw StateError('Bilik ini telah tamat tempoh.');
     final players = jsonMap(raw['players']);
     if (jsonMap(raw['blocked'])[userId] == true) {
-      throw StateError('You have been removed from this room.');
+      throw StateError('Anda telah dikeluarkan daripada bilik ini.');
     }
     if (players.containsKey(userId)) {
       final player = jsonMap(players[userId]);
@@ -37,14 +39,16 @@ class RoomEngine {
       players[userId] = player;
     } else {
       if (room.locked || room.phase != RoomPhase.lobby) {
-        throw StateError('Room is locked or already racing.');
+        throw StateError('Bilik dikunci atau perlumbaan sudah bermula.');
       }
-      if (players.length >= 50) throw StateError('Room is full (50 players).');
+      if (players.length >= 50) {
+        throw StateError('Bilik sudah penuh (50 pelajar).');
+      }
       final name = validateNickname(nickname);
       if (room.players.any(
         (p) => p.nickname.toLowerCase() == name.toLowerCase(),
       )) {
-        throw StateError('That nickname is already in use.');
+        throw StateError('Nama panggilan itu sudah digunakan. Cuba nama lain.');
       }
       players[userId] = RacePlayer(
         id: userId,
@@ -88,7 +92,7 @@ class RoomEngine {
   }) {
     final room = RaceRoom.fromJson(code, raw);
     if (room.hostId != userId) {
-      throw StateError('Only the host can control the room.');
+      throw StateError('Hanya guru (hos) boleh mengawal bilik.');
     }
     if (action == 'delete') return null;
     var next = Map<String, dynamic>.from(raw);

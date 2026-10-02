@@ -144,14 +144,26 @@ class ResultsView extends StatelessWidget {
                   'Terkuat: SK 4.10.${ordered.first}   •   Ulang kaji: SK 4.10.${ordered.last}',
                 ),
               const SizedBox(height: 16),
-              ...topics.entries.map(
-                (e) => Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
+              if (classroom && topics.isNotEmpty)
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 10),
                   child: Text(
-                    'SK 4.10.${e.key}   ${(e.value[0] / (e.value[0] + e.value[1]) * 100).round()}%   (${e.value[0]} betul / ${e.value[0] + e.value[1]} dijawab)',
+                    'Analisis mengikut Standard Pembelajaran (paling lemah dahulu):',
+                    style: TextStyle(fontWeight: FontWeight.w700),
                   ),
                 ),
-              ),
+              ...(topics.entries.toList()..sort(
+                    (x, y) => (x.value[0] / (x.value[0] + x.value[1]))
+                        .compareTo(y.value[0] / (y.value[0] + y.value[1])),
+                  ))
+                  .map(
+                    (e) => Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Text(
+                        'SK 4.10.${e.key}   ${(e.value[0] / (e.value[0] + e.value[1]) * 100).round()}%   (${e.value[0]} betul / ${e.value[0] + e.value[1]} dijawab)',
+                      ),
+                    ),
+                  ),
               if (topics.isEmpty) const Text('Belum ada jawapan direkodkan.'),
             ],
           ),

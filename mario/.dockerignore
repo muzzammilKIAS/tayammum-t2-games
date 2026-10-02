@@ -1,0 +1,10 @@
+build/
+.dart_tool/
+**/.dart_tool/
+.idea/
+.claude/
+.kilo/
+test/
+web/
+assets/
+lib/

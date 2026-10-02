@@ -22,7 +22,7 @@ String validateNickname(String value) {
       name.length > 20 ||
       RegExp(r'[.#$\[\]/\x00-\x1f]').hasMatch(name)) {
     throw StateError(
-      'Use a nickname of 2–20 letters or numbers, without . # \$ / [ ].',
+      'Gunakan nama panggilan 2–20 huruf atau nombor, tanpa . # \$ / [ ].',
     );
   }
   return name;
@@ -49,7 +49,9 @@ Map<String, dynamic> controlChanges(
   switch (action) {
     case 'start':
       if (room.phase != RoomPhase.lobby || room.players.isEmpty) {
-        throw StateError('Join at least one player before starting.');
+        throw StateError(
+          'Sekurang-kurangnya seorang pelajar perlu menyertai sebelum bermula.',
+        );
       }
       return {
         'phase': 'countdown',
@@ -60,15 +62,15 @@ Map<String, dynamic> controlChanges(
     case 'pause':
       if (room.phase != RoomPhase.playing &&
           room.phase != RoomPhase.countdown) {
-        throw StateError('Race is not running.');
+        throw StateError('Perlumbaan tidak sedang berjalan.');
       }
       if (now < room.startAt + 3000) {
-        throw StateError('Wait until GO before pausing.');
+        throw StateError('Tunggu sehingga MULA sebelum menjeda.');
       }
       return {'phase': 'paused', 'pausedAt': now};
     case 'resume':
       if (room.phase != RoomPhase.paused) {
-        throw StateError('Race is not paused.');
+        throw StateError('Perlumbaan tidak sedang dijeda.');
       }
       return {
         'phase': 'playing',
@@ -91,6 +93,6 @@ Map<String, dynamic> controlChanges(
         'locked': false,
       };
     default:
-      throw StateError('Unknown host action.');
+      throw StateError('Tindakan hos tidak dikenali.');
   }
 }
