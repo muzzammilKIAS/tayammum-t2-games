@@ -1,0 +1,36 @@
+[
+  {
+    "topic": 5,
+    "type": "order",
+    "tokens": [
+      "الْقِبْلَةَ",
+      "اِسْتَقْبِلِ",
+      "وَ",
+      "قُمْ"
+    ],
+    "answer": "قُمْ وَاسْتَقْبِلِ الْقِبْلَةَ.",
+    "reason": "Token tidak sepadan tepat dengan ayat jawapan; tidak digunakan."
+  },
+  {
+    "topic": 5,
+    "type": "order",
+    "tokens": [
+      "الْفَاتِحَةَ",
+      "اِقْرَأِ",
+      "ثُمَّ"
+    ],
+    "answer": "اِقْرَأِ الْفَاتِحَةَ ثُمَّ ارْكَعْ.",
+    "reason": "Token tidak sepadan tepat dengan ayat jawapan; tidak digunakan."
+  },
+  {
+    "topic": 8,
+    "type": "order",
+    "tokens": [
+      "سُنَّتَهُ",
+      "أَتَّبِعُ",
+      "النَّبِيِّ"
+    ],
+    "answer": "أَتَّبِعُ سُنَّةَ النَّبِيِّ.",
+    "reason": "Token tidak sepadan tepat dengan ayat jawapan; tidak digunakan."
+  }
+]

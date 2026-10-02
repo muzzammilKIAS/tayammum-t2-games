@@ -1,0 +1,724 @@
+[
+ {
+  "id": "tayammum-asas",
+  "title": "Tayammum: Asas",
+  "subtitle": "Pusingan 1 · SK 4.10 Tayammum",
+  "round": 1,
+  "questions": [
+   {
+    "topic": 1,
+    "bankId": "A01",
+    "sk": "4.10.1",
+    "explanation": "Tayammum ialah menyapu debu tanah yang suci ke muka dan kedua-dua tangan dengan cara tertentu serta niat, bagi menggantikan wuduk atau mandi wajib.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Apakah yang dimaksudkan dengan tayammum?",
+    "options": [
+     "Menyapu debu tanah yang suci ke muka dan kedua-dua tangan dengan cara tertentu serta niat, sebagai ganti wuduk atau mandi wajib",
+     "Membasuh semua anggota wuduk dengan air yang sedikit",
+     "Menyapu kepala dan kaki dengan air",
+     "Mandi dengan air yang suci lagi menyucikan"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A02",
+    "sk": "4.10.1",
+    "explanation": "Surah al-Ma'idah ayat 6 menyebut tayammum apabila tiada air untuk berwuduk atau mandi.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Dalil al-Quran tentang tayammum terdapat dalam surah …",
+    "options": [
+     "Surah al-Ma'idah, ayat 6",
+     "Surah al-Fatihah, ayat 1",
+     "Surah al-Ikhlas, ayat 1",
+     "Surah al-Kauthar, ayat 1"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A03",
+    "sk": "4.10.2",
+    "explanation": "Tayammum hanya diharuskan apabila ada sebab sebenar, antaranya tiada air atau tidak cukup, air terlalu jauh, sakit yang tidak boleh terkena air, dan cuaca sejuk yang memudaratkan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Antara sebab tayammum diharuskan ialah …",
+    "options": [
+     "Air tiada selepas puas dicari",
+     "Tidak sempat berwuduk kerana asyik bermain",
+     "Air di rumah terlalu banyak",
+     "Tidak suka menggunakan air"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A04",
+    "sk": "4.10.2",
+    "explanation": "Sakit yang tidak membolehkan seseorang menggunakan air ialah salah satu sebab tayammum diharuskan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Zaid demam teruk dan doktor melarangnya terkena air. Apakah hukum Zaid bertayammum?",
+    "options": [
+     "Diharuskan kerana sakit yang tidak boleh menggunakan air",
+     "Tidak boleh, dia mesti berwuduk juga",
+     "Wajib meninggalkan solat",
+     "Hanya boleh jika ibunya membenarkan"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A05",
+    "sk": "4.10.3",
+    "explanation": "Debu mestilah daripada tanah yang suci dan tidak bercampur dengan bahan lain seperti tepung atau kapur.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Bahan yang sah digunakan untuk bertayammum ialah …",
+    "options": [
+     "Debu tanah yang suci dan tidak bercampur",
+     "Tepung gandum",
+     "Kapur tulis",
+     "Gula halus"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A06",
+    "sk": "4.10.3",
+    "explanation": "Antara syarat tayammum ialah telah masuk waktu solat dan air telah dicari selepas masuk waktu.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Tayammum hanya boleh dilakukan selepas …",
+    "options": [
+     "Masuk waktu solat dan telah mencari air",
+     "Sebelum masuk waktu solat",
+     "Selesai solat",
+     "Bila-bila masa tanpa mengira waktu"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A07",
+    "sk": "4.10.3",
+    "explanation": "Menghilangkan najis terlebih dahulu ialah salah satu syarat tayammum.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Najis yang ada pada badan perlu …",
+    "options": [
+     "Dihilangkan dahulu sebelum bertayammum",
+     "Dibiarkan sahaja",
+     "Disapu dengan debu bersama muka",
+     "Dihilangkan selepas solat"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A08",
+    "sk": "4.10.4",
+    "explanation": "Niat ialah rukun dan tempatnya di dalam hati. Melafazkannya hanyalah sunat membantu hati.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Niat tayammum dilakukan …",
+    "options": [
+     "Dalam hati",
+     "Dengan kuat sahaja tanpa hati",
+     "Selepas menyapu tangan",
+     "Tidak diperlukan"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A09",
+    "sk": "4.10.4",
+    "explanation": "Tayammum hanya menyapu muka dan kedua-dua tangan, tidak seperti wuduk.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Anggota yang disapu dengan debu semasa bertayammum ialah …",
+    "options": [
+     "Muka dan kedua-dua tangan",
+     "Kepala dan kedua-dua kaki",
+     "Muka, tangan, kepala dan kaki",
+     "Tapak tangan sahaja"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A10",
+    "sk": "4.10.4",
+    "explanation": "Mengikut mazhab Syafie, tangan disapu sehingga siku.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Sapuan debu pada kedua-dua tangan hendaklah sampai …",
+    "options": [
+     "Siku",
+     "Pergelangan tangan",
+     "Bahu",
+     "Hujung jari sahaja"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A11",
+    "sk": "4.10.4",
+    "explanation": "Tertib: muka disapu dahulu, kemudian kedua-dua tangan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Anggota yang disapu dahulu ialah …",
+    "options": [
+     "Muka, kemudian tangan",
+     "Tangan, kemudian muka",
+     "Kepala, kemudian kaki",
+     "Mana-mana dahulu"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A12",
+    "sk": "4.10.8",
+    "explanation": "Urutan: niat, tepuk debu, sapu muka, tepuk debu semula, sapu tangan hingga siku.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "arrange",
+    "prompt": "Susun langkah bertayammum dengan betul",
+    "questionMs": "Susun langkah bertayammum dengan betul",
+    "sequence": [
+     "Berniat dalam hati",
+     "Menepuk tapak tangan pada debu",
+     "Menyapu muka",
+     "Menepuk tapak tangan pada debu semula",
+     "Menyapu tangan hingga siku"
+    ]
+   },
+   {
+    "topic": 1,
+    "bankId": "A13",
+    "sk": "4.10.6",
+    "explanation": "Tayammum batal jika ada air sebelum solat dimulakan, jika boleh menggunakan air semula, dan dengan perkara yang membatalkan wuduk.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Antara perkara yang membatalkan tayammum ialah …",
+    "options": [
+     "Ada air sebelum solat dimulakan",
+     "Membaca al-Quran",
+     "Berzikir selepas solat",
+     "Berjalan ke masjid"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A14",
+    "sk": "4.10.6",
+    "explanation": "Perkara yang membatalkan wuduk turut membatalkan tayammum.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Tayammum juga batal dengan perkara yang membatalkan wuduk, contohnya …",
+    "options": [
+     "Keluar angin dari dubur",
+     "Menyapu muka",
+     "Membaca doa",
+     "Duduk di atas lantai"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A15",
+    "sk": "4.10.7",
+    "explanation": "Tayammum ialah rukhsah (keringanan) daripada Allah supaya solat tetap dapat ditunaikan dalam semua keadaan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Hikmah tayammum disyariatkan ialah …",
+    "options": [
+     "Memudahkan hamba menunaikan solat apabila sukar menggunakan air",
+     "Supaya manusia tidak perlu mandi lagi",
+     "Supaya solat boleh ditinggalkan",
+     "Supaya air dijimatkan sahaja"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "A16",
+    "sk": "4.10.1",
+    "explanation": "Tayammum menggantikan wuduk atau mandi wajib apabila ada keuzuran yang dibenarkan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Tayammum menggantikan …",
+    "options": [
+     "Wuduk dan mandi wajib",
+     "Solat fardu",
+     "Puasa",
+     "Zakat"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   }
+  ],
+  "topicIds": [
+   1
+  ],
+  "topics": [
+   "التَّيَمُّمُ"
+  ]
+ },
+ {
+  "id": "tayammum-tebus",
+  "title": "Pusingan Tebus",
+  "subtitle": "Pusingan 2 · Pemulihan Tayammum",
+  "round": 2,
+  "questions": [
+   {
+    "topic": 1,
+    "bankId": "T01",
+    "sk": "4.10.8",
+    "explanation": "Bermula dengan niat dalam hati.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Langkah PERTAMA bertayammum ialah …",
+    "options": [
+     "Berniat dalam hati",
+     "Menyapu tangan",
+     "Menyapu muka",
+     "Menepuk kaki"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T02",
+    "sk": "4.10.8",
+    "explanation": "Tapak tangan ditepuk pada debu tanah yang suci.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Selepas berniat, kita …",
+    "options": [
+     "Menepuk tapak tangan pada debu yang suci",
+     "Terus menyapu tangan",
+     "Terus bersolat",
+     "Membasuh muka dengan air"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T03",
+    "sk": "4.10.8",
+    "explanation": "Muka disapu dahulu.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Selepas menepuk debu, anggota yang disapu dahulu ialah …",
+    "options": [
+     "Muka",
+     "Tangan",
+     "Kaki",
+     "Kepala"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T04",
+    "sk": "4.10.8",
+    "explanation": "Kedua-dua tangan disapu hingga ke siku.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Tangan disapu sehingga …",
+    "options": [
+     "Siku",
+     "Bahu",
+     "Jari",
+     "Lutut"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T05",
+    "sk": "4.10.4",
+    "explanation": "Hanya muka dan kedua-dua tangan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Apakah anggota yang disapu semasa tayammum?",
+    "options": [
+     "Muka dan tangan",
+     "Kepala dan kaki",
+     "Telinga dan leher",
+     "Perut dan dada"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T06",
+    "sk": "4.10.3",
+    "explanation": "Gunakan debu tanah yang suci dan tidak bercampur.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Contoh debu yang BOLEH digunakan ialah …",
+    "options": [
+     "Debu tanah yang bersih",
+     "Tepung roti",
+     "Kapur",
+     "Gula"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T07",
+    "sk": "4.10.2",
+    "explanation": "Tayammum diharuskan apabila ada sebab sebenar seperti tiada air.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Situasi manakah tayammum DIHARUSKAN?",
+    "options": [
+     "Tiada air selepas puas dicari",
+     "Air ada tetapi malas berwuduk",
+     "Air ada banyak di paip",
+     "Masih awal sebelum waktu solat"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T08",
+    "sk": "4.10.6",
+    "explanation": "Ada air sebelum solat dimulakan membatalkan tayammum.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Jika ada air sebelum kita mula solat, tayammum …",
+    "options": [
+     "Batal",
+     "Masih sah",
+     "Tidak berubah",
+     "Menjadi wajib sunat"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "T09",
+    "sk": "4.10.8",
+    "explanation": "Niat, sapu muka, kemudian sapu tangan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "arrange",
+    "prompt": "Susun tiga langkah mudah bertayammum",
+    "questionMs": "Susun tiga langkah mudah bertayammum",
+    "sequence": [
+     "Berniat",
+     "Sapu muka",
+     "Sapu tangan"
+    ]
+   },
+   {
+    "topic": 1,
+    "bankId": "T10",
+    "sk": "4.10.1",
+    "explanation": "Tayammum menggantikan wuduk dan mandi wajib.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Padankan: tayammum ialah ganti kepada …",
+    "options": [
+     "Wuduk dan mandi wajib",
+     "Solat",
+     "Puasa",
+     "Sedekah"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   }
+  ],
+  "topicIds": [
+   1
+  ],
+  "topics": [
+   "التَّيَمُّمُ"
+  ]
+ },
+ {
+  "id": "tayammum-klinik",
+  "title": "Klinik Fiqah",
+  "subtitle": "Pusingan 3 · Pengayaan KBAT Tayammum",
+  "round": 3,
+  "questions": [
+   {
+    "topic": 1,
+    "bankId": "K01",
+    "sk": "4.10.6",
+    "explanation": "Ada air sebelum solat dimulakan membatalkan tayammum, maka dia perlu menggunakan air itu.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Ali bertayammum kerana tiada air. Sebelum sempat bersolat, dia ternampak sebuah perigi yang airnya boleh digunakan. Apakah keputusannya?",
+    "options": [
+     "Tayammumnya batal; dia perlu berwuduk dengan air itu",
+     "Tayammumnya masih sah kerana sudah bermula",
+     "Dia boleh memilih sama ada mahu berwuduk atau tidak",
+     "Solatnya gugur"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K02",
+    "sk": "4.10.4",
+    "explanation": "Niat ialah rukun. Tanpa niat tayammum tidak sah walaupun gerakannya betul.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Farid menepuk debu, menyapu muka dan tangannya mengikut urutan, tetapi terlupa berniat. Apakah keputusannya?",
+    "options": [
+     "Tidak sah kerana niat ialah rukun",
+     "Sah kerana urutannya betul",
+     "Sah jika dia berniat selepas solat",
+     "Sah kerana anggota sudah disapu"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K03",
+    "sk": "4.10.6",
+    "explanation": "Mengikut mazhab Syafie, satu tayammum untuk satu solat fardu (dan solat sunat yang dikehendaki).",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Siti bertayammum untuk solat Asar. Selepas itu dia mahu menunaikan solat Maghrib dengan tayammum yang sama. Apakah keputusannya?",
+    "options": [
+     "Tidak boleh; satu tayammum untuk satu solat fardu",
+     "Boleh kerana tayammumnya belum batal",
+     "Boleh jika dia berniat semula dalam hati sahaja",
+     "Boleh hanya untuk solat yang tiga rakaat"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K04",
+    "sk": "4.10.2",
+    "explanation": "Air yang tidak cukup kerana diperlukan untuk minum ialah sebab diharuskan tayammum. Solat tidak boleh ditinggalkan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Dalam perkhemahan, air yang tinggal hanya cukup untuk diminum sepanjang hari. Waktu Zohor sudah masuk. Apa yang patut dilakukan?",
+    "options": [
+     "Bertayammum kerana air tidak cukup untuk keperluan lain",
+     "Berwuduk dengan air minuman itu",
+     "Meninggalkan solat sehingga ada air",
+     "Menangguhkan solat hingga malam"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K05",
+    "sk": "4.10.3",
+    "explanation": "Debu yang sah ialah debu tanah yang suci dan tidak bercampur dengan bahan seperti tepung.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Hafiz tiada tanah, lalu dia bertayammum menggunakan tepung gandum. Apakah keputusannya?",
+    "options": [
+     "Tidak sah kerana debu mesti daripada tanah yang suci dan tidak bercampur",
+     "Sah kerana tepung ialah debu",
+     "Sah jika tepungnya halus",
+     "Sah jika dia berniat dengan ikhlas"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K06",
+    "sk": "4.10.3",
+    "explanation": "Masuk waktu solat ialah syarat tayammum.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Nurul bertayammum pada pukul 12.00 tengah hari, sedangkan waktu Zohor masuk pada pukul 1.15 petang. Apakah keputusannya?",
+    "options": [
+     "Tidak sah kerana tayammum belum masuk waktu",
+     "Sah kerana dia sudah bersedia",
+     "Sah jika dia solat Zohor awal",
+     "Sah kerana ada air yang jauh"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K07",
+    "sk": "4.10.6",
+    "explanation": "Perkara yang membatalkan wuduk turut membatalkan tayammum.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Aman sudah bertayammum, kemudian keluar angin sebelum solat. Apakah keputusannya?",
+    "options": [
+     "Tayammumnya batal; dia mesti berwuduk atau bertayammum semula mengikut keadaan",
+     "Tayammumnya masih sah",
+     "Dia hanya perlu berniat semula",
+     "Dia terus boleh solat"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K08",
+    "sk": "4.10.6",
+    "explanation": "Boleh menggunakan air semula membatalkan tayammum dan menghilangkan keharusannya.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Zainal bertayammum kerana demam dan doktor melarang air. Seminggu kemudian dia sembuh dan boleh menggunakan air. Apakah yang berlaku kepada keharusan tayammumnya?",
+    "options": [
+     "Tidak lagi diharuskan; dia mesti berwuduk kerana boleh menggunakan air",
+     "Masih diharuskan selama-lamanya",
+     "Diharuskan jika dia malas berwuduk",
+     "Dia boleh memilih"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K09",
+    "sk": "4.10.4",
+    "explanation": "Had sapuan tangan ialah hingga siku.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Aisyah menyapu muka dan kedua-dua tangannya hanya sampai pergelangan tangan. Apakah penilaian terbaik?",
+    "options": [
+     "Tidak sempurna kerana tangan mesti disapu hingga siku",
+     "Sempurna kerana tangan sudah disapu",
+     "Sempurna kerana muka sudah disapu",
+     "Sempurna jika debunya banyak"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K10",
+    "sk": "4.10.7",
+    "explanation": "Rukhsah hanya dipakai apabila ada sebab yang dibenarkan, bukan atas pilihan atau kemalasan.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Pasangan A berkata: \"Tayammum lebih mudah, jadi boleh dipilih walaupun air ada.\" Penilaian yang paling tepat ialah …",
+    "options": [
+     "Salah kerana tayammum keringanan yang hanya diharuskan apabila ada sebab sebenar",
+     "Betul kerana agama itu mudah",
+     "Betul kerana debu lebih bersih daripada air",
+     "Betul jika solat hampir tamat"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K11",
+    "sk": "4.10.6",
+    "explanation": "Mengikut mazhab Syafie, satu tayammum untuk satu solat fardu dan solat sunat yang dikehendaki.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Selepas solat Zohor dengan tayammum, Imran mahu solat sunat rawatib dengan tayammum yang sama dan tayammumnya belum batal. Apakah penilaian yang tepat?",
+    "options": [
+     "Boleh kerana solat sunat boleh dilakukan dengan tayammum solat fardu",
+     "Tidak boleh kerana tayammum hanya untuk satu solat sahaja",
+     "Boleh hanya selepas Isyak",
+     "Tidak boleh kerana mesti diulang"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   },
+   {
+    "topic": 1,
+    "bankId": "K12",
+    "sk": "4.10.3",
+    "explanation": "Tayammum hanya dibenarkan apabila air benar-benar tiada atau tidak boleh digunakan, maka air mesti dicari terlebih dahulu.",
+    "topicTitle": "التَّيَمُّمُ",
+    "type": "multiple-choice",
+    "prompt": "Pilih jawapan yang betul",
+    "questionMs": "Mengapakah kita perlu mencari air dahulu selepas masuk waktu sebelum bertayammum?",
+    "options": [
+     "Kerana tayammum hanya keringanan apabila air benar-benar tiada",
+     "Supaya solat dilewatkan",
+     "Kerana debu tidak boleh digunakan",
+     "Kerana air lebih mahal"
+    ],
+    "optionsDir": "ltr",
+    "answer": 0
+   }
+  ],
+  "topicIds": [
+   1
+  ],
+  "topics": [
+   "التَّيَمُّمُ"
+  ]
+ }
+]

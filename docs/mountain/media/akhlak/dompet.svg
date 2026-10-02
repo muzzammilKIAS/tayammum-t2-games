@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" role="img" aria-label="Seorang pelajar menghulurkan dompet yang dijumpai kepada pemiliknya">
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop offset="0" stop-color="#e3ece4"/><stop offset="1" stop-color="#faf8f1"/></linearGradient>
+  </defs>
+  <rect width="760" height="460" rx="28" fill="url(#bg)"/>
+  <!-- latar: koridor kampus -->
+  <rect x="0" y="340" width="760" height="120" fill="#e9e2cf"/>
+  <g fill="#cfd6c7"><rect x="40" y="70" width="90" height="190" rx="45"/><rect x="630" y="70" width="90" height="190" rx="45"/></g>
+  <g fill="#ffffff" opacity=".7"><rect x="52" y="86" width="66" height="160" rx="33"/><rect x="642" y="86" width="66" height="160" rx="33"/></g>
+
+  <!-- Ali (kiri) memulangkan dompet -->
+  <g transform="translate(250 0)">
+    <ellipse cx="0" cy="430" rx="70" ry="12" fill="#0f2f28" opacity=".12"/>
+    <rect x="-34" y="300" width="28" height="122" rx="12" fill="#1d4f43"/>
+    <rect x="6" y="300" width="28" height="122" rx="12" fill="#1d4f43"/>
+    <path d="M-62 200q0-46 62-46t62 46v120h-124z" fill="#fffdf8" stroke="#cfd6c7" stroke-width="3"/>
+    <path d="M0 160v150" stroke="#cfd6c7" stroke-width="3"/>
+    <circle cx="0" cy="118" r="44" fill="#d9a77a"/>
+    <path d="M-44 104q0-46 44-46t44 46z" fill="#143f36"/>
+    <rect x="-40" y="92" width="80" height="16" rx="6" fill="#ffffff"/>
+    <circle cx="-15" cy="122" r="5" fill="#173d34"/><circle cx="15" cy="122" r="5" fill="#173d34"/>
+    <path d="M-14 140q14 12 28 0" stroke="#173d34" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- lengan menghulur -->
+    <path d="M52 214q60 6 96 -6" stroke="#fffdf8" stroke-width="30" stroke-linecap="round" fill="none"/>
+    <path d="M52 214q60 6 96 -6" stroke="#cfd6c7" stroke-width="3" fill="none" opacity=".6"/>
+    <circle cx="152" cy="206" r="16" fill="#d9a77a"/>
+  </g>
+
+  <!-- dompet -->
+  <g transform="translate(410 172) rotate(-8)">
+    <rect x="0" y="0" width="74" height="52" rx="9" fill="#8a5a33"/>
+    <rect x="0" y="0" width="74" height="22" rx="9" fill="#a4703f"/>
+    <circle cx="60" cy="22" r="6" fill="#e2ae4c"/>
+  </g>
+  <!-- kilauan -->
+  <g stroke="#e2ae4c" stroke-width="5" stroke-linecap="round">
+    <path d="M446 140v-22"/><path d="M478 150l14-16"/><path d="M414 150l-14-16"/>
+  </g>
+
+  <!-- Pemilik (kanan) -->
+  <g transform="translate(560 0)">
+    <ellipse cx="0" cy="430" rx="70" ry="12" fill="#0f2f28" opacity=".12"/>
+    <rect x="-34" y="300" width="28" height="122" rx="12" fill="#3a4a5c"/>
+    <rect x="6" y="300" width="28" height="122" rx="12" fill="#3a4a5c"/>
+    <path d="M-62 200q0-46 62-46t62 46v120h-124z" fill="#2f6b57"/>
+    <circle cx="0" cy="118" r="44" fill="#c99366"/>
+    <path d="M-46 112q-2-56 46-56t46 56q-10-26-46-26t-46 26z" fill="#2b2420"/>
+    <circle cx="-15" cy="122" r="5" fill="#173d34"/><circle cx="15" cy="122" r="5" fill="#173d34"/>
+    <ellipse cx="0" cy="146" rx="10" ry="8" fill="#173d34"/>
+    <!-- tangan menerima -->
+    <path d="M-52 222q-40 4 -66 -10" stroke="#2f6b57" stroke-width="30" stroke-linecap="round" fill="none"/>
+    <circle cx="-122" cy="210" r="16" fill="#c99366"/>
+  </g>
+  <!-- tanda gembira -->
+  <g transform="translate(620 66)"><circle r="26" fill="#ffffff" stroke="#e2ae4c" stroke-width="4"/><path d="M-10 0l7 8 14-16" stroke="#2f8a5b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

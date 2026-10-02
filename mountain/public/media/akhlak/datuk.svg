@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" role="img" aria-label="Seorang datuk berjanggut putih memegang tongkat bersama cucunya">
+  <defs><linearGradient id="bg2" x2="0" y2="1"><stop offset="0" stop-color="#fbefd2"/><stop offset="1" stop-color="#faf8f1"/></linearGradient></defs>
+  <rect width="760" height="460" rx="28" fill="url(#bg2)"/>
+  <rect x="0" y="350" width="760" height="110" fill="#dfe8d8"/>
+  <!-- rumah kampung -->
+  <g transform="translate(560 120)">
+    <path d="M-10 70 90 -10 190 70z" fill="#8a5a33"/>
+    <rect x="10" y="70" width="160" height="130" fill="#e9d7b4"/>
+    <rect x="70" y="120" width="40" height="80" fill="#a4703f"/>
+    <rect x="24" y="96" width="34" height="30" fill="#ffffff" stroke="#a4703f" stroke-width="4"/>
+    <rect x="122" y="96" width="34" height="30" fill="#ffffff" stroke="#a4703f" stroke-width="4"/>
+    <g fill="#8a5a33"><rect x="18" y="200" width="10" height="30"/><rect x="152" y="200" width="10" height="30"/></g>
+  </g>
+
+  <!-- Datuk -->
+  <g transform="translate(270 0)">
+    <ellipse cx="0" cy="436" rx="80" ry="12" fill="#0f2f28" opacity=".12"/>
+    <rect x="-36" y="306" width="30" height="122" rx="12" fill="#5b6b62"/>
+    <rect x="6" y="306" width="30" height="122" rx="12" fill="#5b6b62"/>
+    <path d="M-66 206q0-48 66-48t66 48v122h-132z" fill="#f2f1e8" stroke="#cfd6c7" stroke-width="3"/>
+    <path d="M-66 300h132" stroke="#2f6b57" stroke-width="16"/>
+    <circle cx="0" cy="118" r="46" fill="#d9a77a"/>
+    <rect x="-42" y="66" width="84" height="34" rx="10" fill="#ffffff" stroke="#e1e3d7" stroke-width="3"/>
+    <!-- cermin mata -->
+    <g fill="none" stroke="#173d34" stroke-width="4"><circle cx="-17" cy="118" r="11"/><circle cx="17" cy="118" r="11"/><path d="M-6 118h12"/></g>
+    <!-- janggut putih -->
+    <path d="M-40 128q4 62 40 70q36-8 40-70q-14 18-40 18t-40-18z" fill="#ffffff" stroke="#e1e3d7" stroke-width="3"/>
+    <path d="M-14 146q14 8 28 0" stroke="#c9c9c0" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- tongkat -->
+    <path d="M78 230q0-26 22-26t22 22" stroke="#8a5a33" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M122 226v206" stroke="#8a5a33" stroke-width="10" stroke-linecap="round"/>
+    <path d="M58 238q34 0 60 -6" stroke="#f2f1e8" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="118" cy="232" r="15" fill="#d9a77a"/>
+    <!-- tangan kiri memimpin cucu -->
+    <path d="M-60 236q-40 26 -62 60" stroke="#f2f1e8" stroke-width="28" stroke-linecap="round" fill="none"/>
+    <circle cx="-124" cy="300" r="15" fill="#d9a77a"/>
+  </g>
+
+  <!-- Cucu -->
+  <g transform="translate(118 90)">
+    <ellipse cx="0" cy="346" rx="46" ry="9" fill="#0f2f28" opacity=".12"/>
+    <rect x="-20" y="262" width="18" height="78" rx="8" fill="#1d4f43"/>
+    <rect x="2" y="262" width="18" height="78" rx="8" fill="#1d4f43"/>
+    <path d="M-40 200q0-32 40-32t40 32v72h-80z" fill="#e2ae4c"/>
+    <circle cx="0" cy="138" r="32" fill="#c99366"/>
+    <path d="M-32 132q-2-40 32-40t32 40q-8-18-32-18t-32 18z" fill="#2b2420"/>
+    <circle cx="-11" cy="140" r="4" fill="#173d34"/><circle cx="11" cy="140" r="4" fill="#173d34"/>
+    <path d="M-10 154q10 8 20 0" stroke="#173d34" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M36 212q22 2 36 0" stroke="#e2ae4c" stroke-width="20" stroke-linecap="round"/>
+  </g>
+</svg>
