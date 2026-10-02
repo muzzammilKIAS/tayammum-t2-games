@@ -13,7 +13,7 @@ Bahan digital untuk pengajaran Tayammum (Pendidikan Islam KSSM Tingkatan 2, Stan
 ## Hos
 
 - **GitHub Pages**: sumber `main`, folder `/docs`. Menghidangkan landing, Mountain solo dan Mario.
-- **Render** (mod langsung): New > Blueprint > pilih repo ini. Perkhidmatan `tayammum-mountain` dibina daripada `mountain/`.
+- **Render** (mod langsung): https://tayammum-mountain.onrender.com (halaman guru: `/host.html`), dibina daripada `mountain/` melalui `render.yaml`.
 
 ## Bina semula
 
