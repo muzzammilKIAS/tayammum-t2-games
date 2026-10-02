@@ -1,7 +1,7 @@
 import { avatarSVG } from '../../shared/avatar.js';
 import { esc, fmt } from '../lib/dom.js';
 
-const typeLabel = { vocabulary: 'Kosa kata', translation: 'Terjemahan', 'fill-blank': 'Isi tempat kosong', 'multiple-choice': 'Soal jawab', arrange: 'Susun ayat' };
+const typeLabel = { 'multiple-choice': 'Pilih jawapan', arrange: 'Susun langkah' };
 
 export function leaderboardRows(r, { removable = false } = {}) {
   return r.players.map(p => `<tr class="${p.finished ? 'is-done' : ''}">
@@ -22,12 +22,12 @@ export function resultsView(r) {
   const [first, second, third] = r.players;
   const podium = [[second, 2], [first, 1], [third, 3]].filter(([p]) => p).map(([p, n]) => `
     <div class="podium-spot p${n}"><div class="podium-av">${avatarSVG(p.avatar, { label: p.name })}</div><strong>${esc(p.name)}</strong><span>${fmt(p.score)} mata · ${fmt(p.altitude)} m</span><div class="podium-block">${n}</div></div>`).join('');
-  const topicRows = a.topics.map((t, i) => `<div class="topic-acc"><span class="topic-tag">Topik ${String.fromCharCode(65 + i)}</span><span lang="ar" dir="rtl" class="ar">${esc(t.title)}</span>${bar(t.accuracy, t.accuracy < 60 ? 'low' : '')}<strong>${t.accuracy ?? '–'}%</strong></div>`).join('');
-  const qRows = a.questions.map(q => `<li class="${q.needsReview ? 'review' : ''}"><span class="qn">S${q.n}</span><span class="qtext"><span lang="ar" dir="auto">${esc(q.text)}</span><small>${typeLabel[q.type] || q.type} · <span lang="ar" dir="rtl">${esc(q.topicTitle)}</span> · Jawapan: <span lang="ar" dir="auto">${esc(q.correctText)}</span></small></span>${bar(q.accuracy, q.accuracy < 60 ? 'low' : '')}<strong>${q.accuracy ?? '–'}%</strong>${q.needsReview ? '<span class="tag warn">Perlu ulang kaji</span>' : ''}</li>`).join('');
+  const topicRows = a.topics.map((t, i) => `<div class="topic-acc"><span class="topic-tag">Topik ${String.fromCharCode(65 + i)}</span><span class="ar">${esc(t.title)}</span>${bar(t.accuracy, t.accuracy < 60 ? 'low' : '')}<strong>${t.accuracy ?? '–'}%</strong></div>`).join('');
+  const qRows = a.questions.map(q => `<li class="${q.needsReview ? 'review' : ''}"><span class="qn">S${q.n}</span><span class="qtext"><span>${esc(q.text)}</span><small>${typeLabel[q.type] || q.type} · ${esc(q.topicTitle)} · Jawapan: <span>${esc(q.correctText)}</span></small></span>${bar(q.accuracy, q.accuracy < 60 ? 'low' : '')}<strong>${q.accuracy ?? '–'}%</strong>${q.needsReview ? '<span class="tag warn">Perlu ulang kaji</span>' : ''}</li>`).join('');
   const review = a.questions.filter(q => q.needsReview).length;
   return `
   <section class="results-hero">
-    <div><span class="eyebrow">${esc(r.label || `LEVEL ${r.level}`)} · ${esc(r.title.toUpperCase())} · KOD ${r.code}</span><h1>Ekspedisi selesai. <em>أَحْسَنْتُمْ!</em></h1>
+    <div><span class="eyebrow">${esc(r.label)} · ${esc(r.title.toUpperCase())} · KOD ${r.code}</span><h1>Ekspedisi selesai. <em>Tahniah semua!</em></h1>
     <p class="lead">${r.players.length} pendaki · ${r.players.filter(p => p.correct === r.total).length} sampai ke puncak · ${r.total} soalan</p></div>
     <div class="class-acc"><strong>${a.accuracy ?? 0}%</strong><span>Ketepatan kelas</span></div>
   </section>

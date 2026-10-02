@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models/curriculum.dart';
 import 'screens/home_screen.dart';
-import 'screens/room_screen.dart';
 import 'screens/solo_play_route.dart';
 
 Route<dynamic>? adventureRoute(RouteSettings settings) {
@@ -19,9 +18,6 @@ Route<dynamic>? adventureRoute(RouteSettings settings) {
         3,
       ),
     ),
-    '/game/host' => RoomScreen(host: true, code: uri.queryParameters['room']),
-    '/game/join' ||
-    '/game/lobby' => RoomScreen(code: uri.queryParameters['room']),
     _ => const AdventureHomeScreen(),
   };
   return MaterialPageRoute(settings: settings, builder: (_) => screen);

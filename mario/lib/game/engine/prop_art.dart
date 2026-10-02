@@ -420,7 +420,7 @@ void drawGate(Canvas canvas, double x, double time, bool passed) {
   }
 }
 
-/// The Grand Muamalat Vault door, with pennants for the finish line.
+/// The final vault door, with pennants for the finish line.
 void drawFinish(Canvas canvas, double x, double time) {
   final p = Paint();
   p.shader = Gradient.radial(Offset(x + 38, 386), 110, [

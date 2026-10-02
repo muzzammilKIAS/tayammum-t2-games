@@ -3,7 +3,7 @@
 import { chromium } from '@playwright/test';
 import { readFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-const BASE = process.env.BASE || 'http://localhost:3411', OUT = fileURLToPath(new URL('../../_bukti/mountain/', import.meta.url));
+const BASE = process.env.BASE || 'http://localhost:3411', OUT = fileURLToPath(new URL('../../_bukti_pembersihan/mountain/', import.meta.url));
 mkdirSync(OUT, { recursive: true });
 const sets = JSON.parse(readFileSync(new URL('../content/sets.json', import.meta.url), 'utf8'));
 const browser = await chromium.launch({ channel: process.env.CHANNEL || 'chrome' });

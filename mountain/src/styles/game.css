@@ -1,4 +1,4 @@
-/* ============ Rabbaniyyah Mountain Challenge — sistem reka bentuk permainan ============ */
+/* ============ Pendakian Tayammum — sistem reka bentuk permainan ============ */
 :root {
   --forest-900: #0f2f28; --forest-800: #143f36; --forest-700: #1d4f43; --forest-600: #2f6b57; --forest-400: #6f9a86; --forest-100: #e3ece4;
   --paper: #faf8f1; --paper-2: #f2f1e8; --card: #fffdf8; --line: #e1e3d7; --line-2: #cfd6c7;
@@ -6,7 +6,7 @@
   --ok: #2f8a5b; --ok-100: #e2f3e8; --bad: #c05a47; --bad-100: #fbe8e3; --warn: #b7812d;
   --r-sm: 10px; --r: 16px; --r-lg: 24px;
   --shadow: 0 10px 30px #0f2f2812; --shadow-lg: 0 24px 60px #0f2f2826;
-  --f-ui: 'DM Sans', system-ui, sans-serif; --f-head: Manrope, 'DM Sans', sans-serif; --f-ar: 'Amiri', 'Geeza Pro', 'Traditional Arabic', serif;
+  --f-ui: 'DM Sans', system-ui, sans-serif; --f-head: Manrope, 'DM Sans', sans-serif; --f-ar: var(--f-head);
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }

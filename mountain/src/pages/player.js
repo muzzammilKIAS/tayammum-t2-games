@@ -7,8 +7,8 @@ import { renderQuestion, renderFeedback } from '../components/question.js';
 import { sfx, shake, flash, floatScore, confetti, banner, combo, crossedCheckpoint } from '../lib/fx.js';
 
 const app = $('#app');
-const KEY = 'rmc-player';
-const state = { code: new URLSearchParams(location.search).get('code')?.replace(/\D/g, '').slice(0, 6) || '', name: storage.get('rmc-name', ''), avatar: cleanAvatar(storage.get('rmc-avatar')), id: null, token: null, room: null, me: null, screen: 'code', q: null, pending: null };
+const KEY = 'tm-player';
+const state = { code: new URLSearchParams(location.search).get('code')?.replace(/\D/g, '').slice(0, 6) || '', name: storage.get('tm-name', ''), avatar: cleanAvatar(storage.get('tm-avatar')), id: null, token: null, room: null, me: null, screen: 'code', q: null, pending: null };
 
 const { socket, request } = connect({ onStatus: s => {
   document.body.dataset.conn = s;
@@ -67,7 +67,7 @@ function showName(error = '') {
     e.preventDefault(); const n = input.value.replace(/\s+/g, ' ').trim();
     if (n.length < 2 || n.length > 20) return $('#err').textContent = 'Gunakan 2–20 aksara.';
     if (/[<>&"'`\\]/.test(n)) return $('#err').textContent = 'Elakkan simbol khas seperti < > & " \'.';
-    state.name = n; storage.set('rmc-name', n); showAvatar();
+    state.name = n; storage.set('tm-name', n); showAvatar();
   };
 }
 function showAvatar() {
@@ -76,7 +76,7 @@ function showAvatar() {
   avatarPicker($('#pick'), { avatar: state.avatar, name: state.name, doneLabel: 'Sertai lobi', onBack: () => showName(), onDone: join });
 }
 async function join(avatar) {
-  state.avatar = avatar; storage.set('rmc-avatar', avatar);
+  state.avatar = avatar; storage.set('tm-avatar', avatar);
   try {
     const res = await request('join', { code: state.code, name: state.name, avatar });
     state.id = res.id; state.token = res.token; state.room = res.room; state.me = res.me;
@@ -97,9 +97,9 @@ function showLobby() {
   shell(`<section class="panel center lobby-wait">
     <span class="eyebrow">${esc(r.label)} · ${esc(r.title.toUpperCase())}</span>
     <div class="wait-avatar">${avatarSVG(state.me?.avatar || state.avatar, { label: state.name })}<span class="wait-ring"></span></div>
-    <h1>Anda di Base Camp, ${esc(state.me?.name || state.name)}!</h1>
+    <h1>Anda di Kem Pangkal, ${esc(state.me?.name || state.name)}!</h1>
     <p class="lead">Lihat nama anda di skrin guru. Pendakian akan bermula sebentar lagi.</p>
-    <div class="wait-topics">${r.topics.map(t => `<span lang="ar" dir="rtl">${esc(t)}</span>`).join('<b>+</b>')}</div>
+    <div class="wait-topics">${r.topics.map(t => `<span>${esc(t)}</span>`).join('<b>+</b>')}</div>
     <p class="wait-count"><span class="pulse-dot"></span><span id="count">${r.players.length}</span> pendaki sedang menunggu</p>
   </section>`, 'screen-lobby');
 }
@@ -109,7 +109,7 @@ function hud() {
   const r = state.room, me = state.me || {};
   const pct = Math.round((me.index || 0) / r.total * 100), climb = Math.round((me.correct || 0) / r.total * 100);
   return `<div class="hud" id="hud">
-    <div class="hud-title"><span>${r.set ? 'Set Guru' : `Level ${r.level}`} · ${esc(r.title)}</span><span class="hud-topics" lang="ar" dir="rtl">${r.topics.map(esc).join(' + ')}</span></div>
+    <div class="hud-title"><span>Set Guru · ${esc(r.title)}</span><span class="hud-topics">${r.topics.map(esc).join(' + ')}</span></div>
     <div class="hud-stats"><div><small>Altitud</small><strong>${fmt(me.altitude || 0)} m</strong></div><div><small>Kemajuan</small><strong>${pct}%</strong></div>${r.settings.leaderboard ? `<div><small>Kedudukan</small><strong>#${me.rank || '–'}</strong></div>` : ''}<div><small>Skor</small><strong>${fmt(me.score || 0)}</strong></div></div>
     <div class="track" aria-label="Kemajuan pendakian ${climb}%"><div class="track-fill" style="width:${climb}%"></div>${[25, 50, 75].map(c => `<span class="track-cp" style="left:${c}%"></span>`).join('')}<span class="track-summit">⚑</span><span class="track-me" style="left:${climb}%">${avatarSVG(me.avatar || state.avatar, { crop: 'head', label: '' })}</span></div>
   </div>`;
@@ -174,7 +174,6 @@ function showFinished() {
   if (first) { if (summit) { sfx.summit(); shake(2); confetti(110); } else { sfx.milestone(); confetti(45); } }
   shell(`${hud()}<section class="panel center finish">
     <div class="finish-scene ${summit ? 'summit' : ''}">${avatarSVG(me.avatar, { label: me.name })}</div>
-    <p class="fb-ar" lang="ar" dir="rtl">${summit ? 'أَحْسَنْتَ! وَصَلْتَ إِلَى الْقِمَّةِ' : 'أَحْسَنْتَ!'}</p>
     <h1>${summit ? 'Anda sampai ke puncak!' : `Anda mendaki ${fmt(me.altitude)} m!`}</h1>
     ${summary(me, r)}
     <p class="wait-count"><span class="pulse-dot"></span>Menunggu guru menamatkan pendakian…</p></section>`, 'screen-finished');

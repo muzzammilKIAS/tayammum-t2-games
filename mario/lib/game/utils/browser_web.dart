@@ -16,6 +16,6 @@ void downloadCsv(String content) {
   final anchor = web.HTMLAnchorElement()
     ..href =
         'data:text/csv;charset=utf-8,${Uri.encodeComponent('\uFEFF$content')}'
-    ..download = 'muamalat-class-results.csv';
+    ..download = 'keputusan-tayammum.csv';
   anchor.click();
 }

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { Server } from 'socket.io';
 import QRCode from 'qrcode';
-import { questionsFor, questionsForSet, findSet, publicQuestion, recordAnswer, rankPlayers, altitude, accuracy, analytics, awards, levels, newPlayer, QUESTION_COUNTS, TIMER_OPTIONS } from './shared/game.js';
+import { questionsForSet, findSet, publicQuestion, recordAnswer, rankPlayers, altitude, accuracy, analytics, awards, newPlayer, TIMER_OPTIONS } from './shared/game.js';
 import { cleanAvatar } from './shared/avatar.js';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -27,9 +27,8 @@ export function cleanName(value) {
 }
 
 function cleanSettings(s = {}) {
-  const count = QUESTION_COUNTS.includes(s.count) ? s.count : 12;
   const timer = TIMER_OPTIONS.includes(s.timer) ? s.timer : 0;
-  return { count, timer, leaderboard: s.calm === true ? false : s.leaderboard !== false, lateJoin: s.lateJoin !== false, duplicateNames: s.duplicateNames === true, calm: s.calm === true };
+  return { timer, leaderboard: s.calm === true ? false : s.leaderboard !== false, lateJoin: s.lateJoin !== false, duplicateNames: s.duplicateNames === true, calm: s.calm === true };
 }
 
 export function createApp({ static: staticDir = join(root, 'dist') } = {}) {
@@ -45,9 +44,9 @@ export function createApp({ static: staticDir = join(root, 'dist') } = {}) {
   const token = () => randomBytes(24).toString('hex');
   const publicPlayer = (room, p) => ({ id: p.id, name: p.name, avatar: p.avatar, index: p.index, correct: p.correct, wrong: p.wrong, score: p.score, streak: p.streak, bestStreak: p.bestStreak, finished: p.finished, online: p.online, answering: room.status === 'playing' && !p.finished && !p.feedback, accuracy: accuracy(p), altitude: altitude(p, room.questions.length) });
   const view = room => {
-    const set = room.set ? findSet(room.set) : null, l = set ? null : levels[room.level - 1];
+    const set = findSet(room.set);
     const players = rankPlayers([...room.players.values()]).map((p, i) => ({ ...publicPlayer(room, p), rank: i + 1 }));
-    return { code: room.code, level: room.level, set: room.set || null, label: set ? 'SET GURU' : `LEVEL ${room.level}`, title: set ? set.title : l.name, topics: set ? set.topics : l.topics.map(t => t.title), status: room.status, locked: room.locked, settings: room.settings, total: room.questions.length, players,
+    return { code: room.code, set: room.set, label: 'SET GURU', title: set.title, subtitle: set.subtitle, topics: set.topics, status: room.status, locked: room.locked, settings: room.settings, total: room.questions.length, players,
       results: room.status === 'ended' ? { analytics: analytics([...room.players.values()], room.questions), awards: awards([...room.players.values()]) } : null };
   };
   // Siaran digabung (≤10/s) supaya 50 pemain tidak membanjiri skrin host.
@@ -84,15 +83,15 @@ export function createApp({ static: staticDir = join(root, 'dist') } = {}) {
     }
     function attach(room, role, id) { if (socket.data.code) socket.leave(socket.data.code); socket.data = { code: room.code, role, id }; socket.join(room.code); }
 
-    on('create', ({ level, set, settings }) => {
+    on('create', ({ set, settings }) => {
       if (socket.data.code) throw Error('Keluar daripada sesi semasa dahulu.');
       if (rooms.size >= 100) throw Error('Pelayan penuh. Cuba kemudian.');
-      if (set != null ? !findSet(set) : !Number.isInteger(level) || !levels[level - 1]?.available) throw Error('Pilih level atau set yang tersedia.');
+      if (!findSet(set)) throw Error('Pilih set soalan yang tersedia.');
       const s = cleanSettings(settings);
-      const questions = set != null ? questionsForSet(set) : questionsFor(level, s.count);
-      if (set != null) s.count = questions.length;
+      const questions = questionsForSet(set);
+      s.count = questions.length;
       let code; do { code = String(randomInt(100000, 1000000)); } while (rooms.has(code));
-      const room = { code, level: set != null ? 0 : level, set: set ?? null, settings: s, hostToken: token(), status: 'lobby', locked: false, players: new Map(), questions, created: Date.now(), touched: Date.now() };
+      const room = { code, set, settings: s, hostToken: token(), status: 'lobby', locked: false, players: new Map(), questions, created: Date.now(), touched: Date.now() };
       rooms.set(code, room); attach(room, 'host');
       return { token: room.hostToken, role: 'host', room: view(room) };
     });
@@ -173,7 +172,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const port = Number(process.env.PORT) || 3001;
   const { http } = createApp();
   http.listen(port, '0.0.0.0', () => {
-    console.log(`Rabbaniyyah Mountain Challenge: http://localhost:${port}`);
+    console.log(`Pendakian Tayammum: http://localhost:${port}`);
     for (const ip of lanAddresses()) console.log(`  Rangkaian kelas: http://${ip}:${port}`);
   });
 }

@@ -118,7 +118,7 @@ const _worlds = <_Palette>[
     valley: Color(0xFF3D5F6B),
     valleyDeep: Color(0xFF1F343C),
   ),
-  // 5 — The Grand Muamalat Vault. Night observatory.
+  // 5 — The final vault. Night observatory.
   _Palette(
     skyTop: Color(0xFF101D33),
     skyMid: Color(0xFF1E3454),
@@ -617,7 +617,7 @@ void _garden(Canvas canvas, Paint p, double bx, double h, _Palette w) {
   }
 }
 
-/// Muamalat marketplace: striped awnings over an arcade.
+/// Marketplace: striped awnings over an arcade.
 void _bazaar(Canvas canvas, Paint p, double bx, double h, _Palette w) {
   final r = Rect.fromLTWH(bx, _horizon - h * .78, 172, h * .78);
   _body(canvas, p, r, w);

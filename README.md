@@ -4,10 +4,10 @@ Bahan digital untuk pengajaran Tayammum (Pendidikan Islam KSSM Tingkatan 2, Stan
 
 | Folder | Kandungan |
 |---|---|
-| `mountain/` | Rabbaniyyah Mountain, tiga set soalan Tayammum. Solo (statik) dan mod kelas langsung (pelayan Node, Socket.io) |
+| `mountain/` | Pendakian Tayammum (enjin Mountain), tiga set soalan. Solo (statik) dan mod kelas langsung (pelayan Node, Socket.io) |
 | `mario/` | Pengembaraan Tayammum, permainan platform Flutter (tiga level) |
 | `bank/` | Bank soalan (JSON) yang menjadi sumber kedua-dua permainan |
-| `docs/` | Laman GitHub Pages: pautan permainan, Mountain solo, Mario web |
+| `docs/` | Dashboard (GitHub Pages) yang menghos Pendakian solo dan Pengembaraan, bersama kod QR |
 | `render.yaml` | Blueprint Render untuk mod kelas langsung Mountain |
 
 ## Hos
@@ -17,7 +17,7 @@ Bahan digital untuk pengajaran Tayammum (Pendidikan Islam KSSM Tingkatan 2, Stan
 
 ## Bina semula
 
-- Mountain: `cd mountain && npm ci && python3 scripts/build-tayammum.py && npm run build`, kemudian salin `dist/` ke `docs/mountain/`.
+- Mountain: `cd mountain && npm ci && python3 scripts/build-tayammum.py && npm test && npm run build`, kemudian salin `dist/` ke `docs/mountain/`.
 - Mario: `cd mario && flutter pub get && flutter build web --release`, kemudian salin `build/web/` ke `docs/mario/` dan tukar `<base href>` kepada `./`.
 
 Soalan bertanda [SAHKAN] dalam `bank/bank_tayammum.json` perlu disemak dengan buku teks.

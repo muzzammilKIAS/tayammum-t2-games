@@ -238,15 +238,22 @@ class _PlayScreenState extends State<PlayScreen> with WidgetsBindingObserver {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            widget.cover ?? 'Pengembaraan dijeda',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: gold,
-                              fontSize: 40,
-                              fontWeight: FontWeight.w800,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                widget.cover ?? 'Pengembaraan dijeda',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  color: gold,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
                             ),
                           ),
+                          const SizedBox(height: 12),
                           if (_manualPause)
                             FilledButton(
                               onPressed: () => setState(() {
@@ -283,13 +290,13 @@ class _PlayScreenState extends State<PlayScreen> with WidgetsBindingObserver {
                 onUp: () => game.right = false,
               ),
               const Spacer(),
-              const Flexible(
-                child: Text(
+              if (MediaQuery.sizeOf(context).width >= 600) ...[
+                const Text(
                   'A / D  •  SPAS',
                   style: TextStyle(color: sky, fontSize: 10),
                 ),
-              ),
-              const SizedBox(width: 12),
+                const SizedBox(width: 12),
+              ],
               _HoldControl(
                 icon: Icons.keyboard_double_arrow_up,
                 label: 'Lompat',

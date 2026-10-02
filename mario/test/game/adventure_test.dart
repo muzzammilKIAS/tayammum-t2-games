@@ -7,12 +7,9 @@ import 'package:umt3033_app/game/data/question_bank.dart';
 import 'package:umt3033_app/game/engine/adventure_game.dart';
 import 'package:umt3033_app/game/models/curriculum.dart';
 import 'package:umt3033_app/game/models/race_state.dart';
-import 'package:umt3033_app/game/multiplayer/local_room_service.dart';
-import 'package:umt3033_app/game/multiplayer/room_service.dart';
 import 'package:umt3033_app/game/services/progress_store.dart';
 import 'package:umt3033_app/game/widgets/adventure_style.dart';
 import 'package:umt3033_app/game/widgets/question_gate.dart';
-import 'package:umt3033_app/game/widgets/race_board.dart';
 import 'package:umt3033_app/game/screens/results_screen.dart';
 
 void main() {
@@ -139,87 +136,6 @@ void main() {
     });
     expect(run.topics['1']['correct'], 2);
   });
-  test('hash join keeps GitHub Pages base path and room parameter', () {
-    final url = Uri.parse(
-      joinUrl(
-        Uri.parse('https://example.com/umt3033_flutter/#/game/host'),
-        'ABC234',
-      ),
-    );
-    expect(url.path, '/umt3033_flutter/');
-    expect(url.fragment, '/game/join?room=ABC234');
-  });
-  test('host transition timestamps preserve paused time', () {
-    final room = RaceRoom(
-      code: 'ABC234',
-      hostId: 'host',
-      level: 1,
-      phase: RoomPhase.paused,
-      pausedAt: 1000,
-      pausedMs: 200,
-    );
-    expect(controlChanges(room, 'resume', 4000)['pausedMs'], 3200);
-    expect(() => controlChanges(room, 'start', 4000), throwsStateError);
-  });
-  for (final count in [2, 10, 50]) {
-    test(
-      'local adapter $count players: join, lock, race, recovery, results and next round',
-      () async {
-        SharedPreferences.setMockInitialValues({});
-        final prefs = await SharedPreferences.getInstance();
-        final host = LocalRoomService(prefs, 'host'),
-            other = LocalRoomService(prefs, 'other');
-        final code = await host.create(1);
-        final players = List.generate(
-          count,
-          (i) => LocalRoomService(prefs, 'p$i'),
-        );
-        for (var i = 0; i < count; i++) {
-          await players[i].join(code, 'Student $i', i % 4);
-        }
-        expect((await host.watch(code).first)!.players.length, count);
-        await expectLater(other.join(code, 'Student 0', 0), throwsStateError);
-        await expectLater(other.control(code, 'start'), throwsStateError);
-        await expectLater(
-          other.join('ZZZZZZ', 'New player', 0),
-          throwsStateError,
-        );
-        await host.control(code, 'start');
-        await expectLater(other.join(code, 'Late player', 0), throwsStateError);
-        for (var i = 0; i < count; i++) {
-          final run = RunState();
-          run.answer(1, i.isEven, 1000);
-          run.progress = .2;
-          await players[i].publish(code, 0, run);
-        }
-        var room = (await host.watch(code).first)!;
-        expect(room.players.every((p) => p.run.checkpoint == 1), isTrue);
-        await players.first.leave(code);
-        await players.first.join(code, 'Ignored recovery name', 2);
-        room = (await host.watch(code).first)!;
-        expect(room.players.first.run.checkpoint, 1);
-        expect(room.players.first.nickname, 'Student 0');
-        await host.control(code, 'end');
-        await host.control(code, 'next', level: 2);
-        await players.first.publish(
-          code,
-          0,
-          RunState(score: 999),
-        ); // stale round ignored
-        room = (await host.watch(code).first)!;
-        expect(room.level, 2);
-        expect(room.round, 1);
-        expect(room.players.every((p) => p.run.score == 0), isTrue);
-        await host.control(code, 'remove', playerId: players.first.userId);
-        await expectLater(
-          players.first.join(code, 'Removed player', 0),
-          throwsStateError,
-        );
-        await host.control(code, 'delete');
-        expect(await host.watch(code).first, isNull);
-      },
-    );
-  }
   test(
     'actual platform simulation reaches all 16 gates (level 1) and the finish',
     () async {
@@ -302,92 +218,35 @@ void main() {
     );
     expect(tester.takeException(), isNull);
   });
-  testWidgets('50-player projector shows all avatars within 16:9 display', (
+  testWidgets('skrin keputusan muat pada lebar telefon tanpa limpahan', (
     tester,
   ) async {
-    tester.view.physicalSize = const Size(1440, 900);
+    tester.view.physicalSize = const Size(390, 844);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
+    final run = RunState();
+    run.answer(1, true, 1200);
+    run.answer(2, false, 2000);
+    run.finish();
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: Padding(
+          body: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
-            child: SizedBox(
-              height: 720,
-              child: RaceBoard(
-                room: RaceRoom(
-                  code: 'ABC234',
-                  hostId: 'host',
-                  level: 1,
-                  players: List.generate(
-                    50,
-                    (i) => RacePlayer(
-                      id: '$i',
-                      nickname: 'Student $i',
-                      avatar: i % 4,
-                    ),
-                  ),
-                ),
-              ),
+            child: ResultsView(
+              players: [
+                RacePlayer(id: 'solo', nickname: 'Anda', avatar: 1, run: run),
+              ],
             ),
           ),
         ),
       ),
     );
-    await tester.pump(const Duration(seconds: 1));
-    expect(find.byType(LiveAvatarMarker), findsNWidgets(50));
     expect(tester.takeException(), isNull);
-    expect(
-      tester.getBottomRight(find.byType(LiveAvatarMarker).last).dy,
-      lessThan(750),
-    );
+    expect(find.text('Ilmu dibuka.'), findsOneWidget);
+    expect(find.textContaining('Terkuat: SK 4.10.1'), findsOneWidget);
   });
-  for (final count in [20, 50]) {
-    testWidgets('$count players fit a 1280x720 classroom projector', (
-      tester,
-    ) async {
-      tester.view.physicalSize = const Size(1280, 720);
-      tester.view.devicePixelRatio = 1;
-      addTearDown(tester.view.resetPhysicalSize);
-      addTearDown(tester.view.resetDevicePixelRatio);
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.all(24),
-              child: SizedBox(
-                height: 480,
-                child: RaceBoard(
-                  room: RaceRoom(
-                    code: 'ABC234',
-                    hostId: 'host',
-                    level: 1,
-                    players: List.generate(
-                      count,
-                      (i) => RacePlayer(
-                        id: '$i',
-                        nickname: 'Student $i',
-                        avatar: i % 4,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-      await tester.pump(const Duration(seconds: 1));
-      expect(find.byType(LiveAvatarMarker), findsNWidgets(count));
-      expect(
-        tester.getBottomRight(find.byType(LiveAvatarMarker).last).dy,
-        lessThanOrEqualTo(504),
-      );
-      expect(tester.takeException(), isNull);
-    });
-  }
   test('CSV escapes quoted names and prevents formula injection', () {
     final csv = resultsCsv([RacePlayer(id: '1', nickname: '=SUM(1,2)')]);
     expect(csv, contains('"\'=SUM(1,2)"'));

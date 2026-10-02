@@ -1,6 +1,6 @@
-# Rabbaniyyah Mountain: Set Tayammum (HPGD3303)
+# Pendakian Tayammum (Tingkatan 2)
 
-Salinan game kelas "Rabbaniyyah Mountain" yang soalannya ditukar kepada **Tayammum** (Tingkatan 2, DSKP KSSM SK 4.10). Mekanik game tidak berubah. Sumber soalan tunggal: `../00_bank/bank_tayammum.json` (38 soalan). Projek asal tidak disentuh.
+Game pendakian gunung berasaskan **Tayammum** (Tingkatan 2, DSKP KSSM SK 4.10). Mekanik game (gunung, avatar, sesi langsung, mod selamat, analitik, CSV) dikekalkan. Jenama, UI dan kandungan kini sepenuhnya Tayammum dalam Bahasa Melayu; tiada lagi mod 7 level / 12 topik kosa kata Arab. Sumber soalan tunggal: `../00_bank/bank_tayammum.json` (38 soalan). Projek asal tidak disentuh.
 
 ## Jana semula soalan
 `python3 scripts/build-tayammum.py` menulis `content/sets.json` (tiga set sahaja; set akhlak lama dibuang).
@@ -22,21 +22,23 @@ Salinan game kelas "Rabbaniyyah Mountain" yang soalannya ditukar kepada **Tayamm
 | Pusingan Tebus (`tayammum-tebus`) | 10 | Pelajar yang belum menguasai | Pemulihan, soalan langkah demi langkah |
 | Klinik Fiqah (`tayammum-klinik`) | 12 | Pelajar yang telah menguasai | Pengayaan KBAT, situasi dan penilaian |
 
-## Perubahan di luar `sets.json`
-- `src/components/question.js`: soalan "susun" kini menggunakan arah kiri ke kanan (`dir="ltr"`) apabila token tiada huruf Arab. Sebelum ini token Melayu dipaparkan RTL sehingga susunan kelihatan terbalik. Token Arab kekal RTL.
-- `src/styles/game.css`: satu baris gaya supaya token Melayu menggunakan fon UI.
-- `tests/game.test.js`: ID set akhlak dikemas kini kepada ID set Tayammum.
-- Tambahan: `scripts/build-tayammum.py`, `scripts/verify-tayammum.mjs`.
+## Pembersihan sisa game Arab (Okt 2026)
+- Dibuang daripada UI dan kod: jenama "Rabbaniyyah Mountain Challenge" dan teks Arab (tajuk, label topik, ucapan, petikan), mod level/topik (host, solo, laman utama, `shared/game.js`, `server.js`), jenis soalan kosa kata/terjemahan/isi tempat kosong, audio, fon Amiri, pembantu RTL, kunci simpanan `rmc-*` (kini `tm-*`).
+- Hanya tiga Set Guru tersedia (`tayammum-asas`, `tayammum-tebus`, `tayammum-klinik`). Medan `topics`/`topicTitle` dalam `content/sets.json` ditukar daripada tulisan Arab kepada "Tayammum" (isi soalan dan hukum tidak diubah).
+- Jenama BM baharu: "Pendakian Tayammum"; istilah "Base Camp/Checkpoint" menjadi "Kem Pangkal/Persinggahan".
+- `vite.config.js`: `publicDir: false` supaya media lama (`public/media/akhlak`) tidak masuk ke `dist/`.
+- Fail lama tidak dirujuk lagi dan boleh dipadam secara manual: `content/topics.json`, `content/import-issues.json`, `public/media/`, `docs/` (LEVEL_MAPPING, TOPICS_AUDIT, ARCHITECTURE), `scripts/build-audio.py`, `scripts/build-sets.py`, `scripts/import-content.py`.
+- Ujian dikemas kini (`tests/game.test.js`, `tests/live.test.js`: set Tayammum, tiada Arab dalam `sets.json`; ujian langsung kini menunggu soalan bukan-null sebelum menyemak, jadi tidak lagi gagal berselang).
+- `scripts/audit-pembersihan.mjs`: audit Playwright (index, solo tiga set, host, pelajar, projektor, keputusan) yang menandakan sebarang teks Arab/Inggeris/Rabbaniyyah. Guna `BASE=http://localhost:PORT node scripts/audit-pembersihan.mjs`.
 
 ## Perkara perlu guru semak
 Lima penjelasan dalam bank bertanda `[SAHKAN dengan buku teks]` (A10, A12, K03, K09, K11). Penanda ini **dibuang daripada paparan pelajar** tetapi kandungan fiqhnya tidak diubah. Sila sahkan dengan buku teks (had sapuan tangan hingga siku, bilangan tepukan, satu tayammum untuk satu solat fardu) sebelum digunakan.
 
 ## Apa yang diuji
-- `npm test`: 13 ujian (logik set, skor, mod selamat, sesi langsung dengan 5 pemain palsu).
-- `node scripts/verify-tayammum.mjs` (Playwright, Google Chrome): setiap set dimainkan hingga habis dengan jawapan betul dan salah berselang; teks soalan, penjelasan, arah token susun dan skrin keputusan disemak; `host.html` menyenaraikan tiga set dan Mod selamat boleh dihidupkan. Tangkapan skrin: `../_bukti/mountain/`.
+- `npm test`: 12 ujian lulus (diulang 6 kali tanpa kegagalan).
+- Audit Playwright (Google Chrome): ketiga-tiga set solo hingga skrin keputusan; host cipta sesi, pelajar (telefon 390px) sertai, jawab semua soalan, paparan gunung/pisah/kedudukan/projektor, keputusan dan butang CSV; tiada teks Arab, Rabbaniyyah atau Inggeris dikesan. `node scripts/verify-tayammum.mjs` juga lulus. Tangkapan skrin: `../_bukti_pembersihan/mountain/`.
+- `dist/` dan `../docs/mountain/` bebas daripada aksara Arab dan perkataan Rabbaniyyah/vocab; `docs/mountain/solo.html?set=...` berfungsi (diuji melalui pelayan statik, laluan relatif).
 
 ## Apa yang tidak diuji
-- Sesi langsung sebenar dengan telefon pelajar pada rangkaian bilik darjah (hanya pemain palsu dalam ujian).
-- Jawapan bunyi/audio dan gambar (set Tayammum tidak mempunyai audio atau gambar; teks "audio, gambar & susun ayat" pada kad Set Guru ialah teks lama yang tidak diubah).
-- Pelayar selain Chrome, dan paparan telefon.
-- Ujian `tests/live.test.js` kadangkala gagal sekali dalam beberapa larian (perlumbaan masa dalam ujian; berlaku juga pada projek asal), dan lulus apabila dijalankan semula.
+- Sesi langsung sebenar dengan telefon pelajar pada rangkaian bilik darjah, dan hos Render sebenar selepas push.
+- Pelayar selain Chrome.

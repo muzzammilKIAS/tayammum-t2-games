@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/race_state.dart';
 
 class ProgressStore {
-  static const key = 'umt3033_adventure_v1';
+  static const key = 'tayammum_t2_v1';
   final SharedPreferences prefs;
   Map<String, dynamic> data;
   ProgressStore._(this.prefs, this.data);

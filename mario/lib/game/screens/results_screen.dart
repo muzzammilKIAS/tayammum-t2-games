@@ -181,7 +181,7 @@ String resultsCsv(List<RacePlayer> players) {
   }
 
   return [
-    'Rank,Nickname,Score,Accuracy,Correct,Wrong,TimeSeconds,Finished',
+    'Kedudukan,Nama,Skor,Ketepatan,Betul,Salah,MasaSaat,Selesai',
     ...players.asMap().entries.map((e) {
       final p = e.value;
       return [

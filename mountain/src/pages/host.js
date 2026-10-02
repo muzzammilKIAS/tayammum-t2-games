@@ -1,16 +1,16 @@
 import '../styles/game.css';
 import { $, $$, esc, fmt, render, toast, storage, brand } from '../lib/dom.js';
 import { connect } from '../lib/net.js';
-import { levels, sets, QUESTION_COUNTS, TIMER_OPTIONS } from '../../shared/game.js';
+import { sets, TIMER_OPTIONS } from '../../shared/game.js';
 import { avatarSVG } from '../../shared/avatar.js';
 import { createMountain } from '../components/mountain.js';
 import { leaderboardRows, resultsView, csvFor } from '../components/results.js';
 
 const app = $('#app');
-const KEY = 'rmc-host';
-const state = { screen: 'setup', level: 1, set: null, settings: { count: 12, timer: 20, leaderboard: true, lateJoin: true, duplicateNames: false, calm: false }, room: null, token: null, view: 'mountain', joinUrl: '', feed: [], prev: new Map(), map: null };
+const KEY = 'tm-host';
+const state = { screen: 'setup', set: sets[0].id, settings: { timer: 20, leaderboard: true, lateJoin: true, duplicateNames: false, calm: false }, room: null, token: null, view: 'mountain', joinUrl: '', feed: [], prev: new Map(), map: null };
 const statusText = { lobby: 'Lobi', playing: 'Sedang mendaki', paused: 'Dijeda', ended: 'Tamat' };
-const labelOf = r => r.set ? 'Set Guru' : `Level ${r.level}`;
+const labelOf = () => 'Set Guru';
 const calm = () => !!state.room?.settings?.calm;
 const TARGET = 80;
 
@@ -83,24 +83,14 @@ function drawSetup() {
   <main class="setup">
     <section class="setup-levels">
       <span class="eyebrow">MOD GURU · LANGKAH 1</span>
-      <h1>Pilih laluan pendakian</h1>
-      <p class="lead">Setiap level menggabungkan dua topik sebenar daripada modul Rabbaniyyah. Pelajar menjawab di telefon; kelas melihat semua pendaki bergerak di skrin anda.</p>
-      <div class="set-picks"><span class="field-label">Set guru · dibina untuk pelajaran tertentu</span>${sets.map(t => `
-        <button class="set-row" data-set="${t.id}" aria-pressed="${state.set === t.id}"><span class="set-badge">${t.round === 2 ? '↺' : '★'}</span><span class="level-info"><small>SET GURU · ${esc(t.subtitle.toUpperCase())}</small><strong>${esc(t.title)}</strong><span class="set-meta">${t.questions.length} soalan · audio, gambar & susun ayat</span></span><span class="level-check" aria-hidden="true">✓</span></button>`).join('')}</div>
-      <ol class="level-path">${[...levels].reverse().map(l => `
-        <li><button class="level-row" data-level="${l.id}" aria-pressed="${!state.set && l.id === state.level}" ${l.available ? '' : 'disabled'}>
-          <span class="level-num">${l.id === 7 ? '⚑' : String(l.id).padStart(2, '0')}</span>
-          <span class="level-info"><small>LEVEL ${l.id} · ${esc(l.name.toUpperCase())}</small>
-          ${l.available ? l.topics.map((t, i) => `<span class="ar" lang="ar" dir="rtl"><em>Topik ${l.topicIds[i]}</em>${esc(t.title)}</span>`).join('') : '<span class="muted">Kandungan Topik 13 & 14 belum tersedia dalam sumber Rabbaniyyah.</span>'}</span>
-          <span class="level-check" aria-hidden="true">✓</span>
-        </button></li>`).join('')}
-        <li class="base-row"><span>⛺</span> BASE CAMP</li>
-      </ol>
+      <h1>Pilih set soalan Tayammum</h1>
+      <p class="lead">Tiga set soalan Tayammum untuk Tingkatan 2. Pelajar menjawab di telefon; kelas melihat semua pendaki bergerak di skrin anda.</p>
+      <div class="set-picks"><span class="field-label">Set guru · ulang kaji Tayammum</span>${sets.map(t => `
+        <button class="set-row" data-set="${t.id}" aria-pressed="${state.set === t.id}"><span class="set-badge">${t.round === 2 ? '↺' : '★'}</span><span class="level-info"><small>SET GURU · ${esc(t.subtitle.toUpperCase())}</small><strong>${esc(t.title)}</strong><span class="set-meta">${t.questions.length} soalan</span></span><span class="level-check" aria-hidden="true">✓</span></button>`).join('')}</div>
     </section>
     <aside class="setup-panel card">
       <span class="eyebrow">LANGKAH 2 · TETAPAN</span>
       <h2>Tetapan sesi</h2>
-      <div class="field"><span class="field-label">Bilangan soalan</span>${seg('count', QUESTION_COUNTS, s.count, o => `${o} soalan`)}<small class="hint">Separuh daripada setiap topik, pelbagai jenis soalan.</small></div>
       <div class="field"><span class="field-label">Pemasa setiap soalan</span>${seg('timer', TIMER_OPTIONS, s.timer, o => o ? `${o}s` : 'Tiada')}</div>
       <div class="field toggles">
         ${toggle('calm', 'Mod selamat (kurangkan kebimbangan)', 'Tiada bonus kelajuan. Nama dan kedudukan disembunyikan di projektor dan telefon.')}
@@ -113,14 +103,12 @@ function drawSetup() {
     </aside>
   </main>`);
   const summary = () => {
-    const t = sets.find(x => x.id === state.set), l = levels[state.level - 1];
-    $$('[data-seg="count"]').forEach(b => b.disabled = !!t);
-    $('#summary').innerHTML = `<strong>${t ? `Set Guru · ${esc(t.title)}` : `Level ${l.id} · ${esc(l.name)}`}</strong><span>${t ? t.questions.length : s.count} soalan · ${s.timer ? `${s.timer}s setiap soalan` : 'tanpa pemasa'}${s.calm ? ' · mod selamat' : ''} · puncak 3,000 m</span>`;
+    const t = sets.find(x => x.id === state.set);
+    $('#summary').innerHTML = `<strong>Set Guru · ${esc(t.title)}</strong><span>${t.questions.length} soalan · ${s.timer ? `${s.timer}s setiap soalan` : 'tanpa pemasa'}${s.calm ? ' · mod selamat' : ''} · puncak 3,000 m</span>`;
   };
   summary();
-  const pick = (setId, level) => { state.set = setId; if (level) state.level = level; $$('[data-set]').forEach(x => x.setAttribute('aria-pressed', x.dataset.set === setId)); $$('[data-level]').forEach(x => x.setAttribute('aria-pressed', !setId && +x.dataset.level === state.level)); summary(); };
+  const pick = setId => { state.set = setId; $$('[data-set]').forEach(x => x.setAttribute('aria-pressed', x.dataset.set === setId)); summary(); };
   $$('[data-set]').forEach(b => b.onclick = () => pick(b.dataset.set));
-  $$('[data-level]').forEach(b => b.onclick = () => pick(null, +b.dataset.level));
   $$('[data-seg]').forEach(b => b.onclick = () => { s[b.dataset.seg] = +b.dataset.value; $$(`[data-seg="${b.dataset.seg}"]`).forEach(x => x.setAttribute('aria-checked', x === b)); summary(); });
   $$('[data-toggle]').forEach(i => i.onchange = () => {
     s[i.dataset.toggle] = i.checked;
@@ -130,7 +118,7 @@ function drawSetup() {
   $('#create').onclick = async e => {
     e.currentTarget.disabled = true;
     try {
-      const res = await request('create', state.set ? { set: state.set, settings: s } : { level: state.level, settings: s });
+      const res = await request('create', { set: state.set, settings: s });
       state.token = res.token; storage.set(KEY, { code: res.room.code, token: res.token });
       history.replaceState(null, '', `?code=${res.room.code}`);
       await resolveJoinUrl(res.room.code); state.feed = []; state.prev = new Map(); onRoom(res.room, true);
@@ -149,8 +137,8 @@ function drawLobby() {
     <section class="lobby-main">
       <div class="lobby-info">
         <span class="eyebrow light">${esc(r.label)} · ${esc(r.title.toUpperCase())}</span>
-        <p class="lobby-arabic" lang="ar" dir="rtl">سِبَاقٌ إِلَى الْقِمَّةِ</p>
-        <div class="lobby-topics">${r.topics.map((t, i) => `<span lang="ar" dir="rtl">${esc(t)}</span>${i === 0 ? '<b>+</b>' : ''}`).join('')}</div>
+        <p class="lobby-arabic">Pendakian Tayammum</p>
+        <div class="lobby-topics"><span>${esc(r.subtitle)}</span></div>
         <div class="join-steps">
           <div><span class="step-no">1</span><span>Buka <strong>${esc(url)}</strong><br>atau imbas kod QR</span></div>
           <div><span class="step-no">2</span><span>Masukkan kod permainan</span></div>
@@ -160,7 +148,7 @@ function drawLobby() {
       <figure class="qr-card"><img src="/api/qr?text=${encodeURIComponent(state.joinUrl)}" alt="Kod QR untuk menyertai sesi ${r.code}" width="320" height="320"><figcaption>Imbas untuk sertai</figcaption></figure>
     </section>
     <section class="lobby-players">
-      <div class="lobby-players-head"><h2><span id="count">0</span> pendaki di Base Camp</h2><p id="lobby-hint"></p><button class="btn btn-gold btn-xl" id="start">Mulakan pendakian <span aria-hidden="true">↑</span></button></div>
+      <div class="lobby-players-head"><h2><span id="count">0</span> pendaki di Kem Pangkal</h2><p id="lobby-hint"></p><button class="btn btn-gold btn-xl" id="start">Mulakan pendakian <span aria-hidden="true">↑</span></button></div>
       <ul class="chips" id="chips" aria-live="polite"></ul>
     </section>
   </main>`);
@@ -194,13 +182,13 @@ function drawGame() {
   <div class="game-shell view-${state.view}">
     <header class="host-bar">
       ${brand()}
-      <div class="host-bar-mid"><span class="bar-level">${labelOf(r)} · ${esc(r.title)}</span><span class="code-chip">Kod <strong>${codeFmt(r.code)}</strong></span><span class="status-pill" id="status"></span></div>
+      <div class="host-bar-mid"><span class="bar-level">${labelOf()} · ${esc(r.title)}</span><span class="code-chip">Kod <strong>${codeFmt(r.code)}</strong></span><span class="status-pill" id="status"></span></div>
       <div class="tabs" role="tablist" aria-label="Paparan">${[['mountain', 'Gunung'], ['split', 'Pisah'], ...(r.settings.calm ? [] : [['board', 'Kedudukan']])].map(([k, l]) => `<button role="tab" data-view="${k}" aria-selected="${state.view === k}">${l}</button>`).join('')}</div>
       <div class="host-bar-actions"><button class="btn btn-quiet" id="pause"></button><button class="btn btn-quiet" id="lock"></button><button class="btn btn-quiet" id="projector" title="Mod projektor (P)">⛶ Projektor</button><button class="btn btn-danger" id="end">Tamatkan</button></div>
     </header>
     <main class="stage">
       <section class="stage-mountain" id="mountain"></section>
-      <div class="overlay ov-title"><span class="eyebrow light">${esc(r.label)} · ${esc(r.title.toUpperCase())}</span><div class="ov-topics">${r.topics.map(t => `<span lang="ar" dir="rtl">${esc(t)}</span>`).join('<b>+</b>')}</div></div>
+      <div class="overlay ov-title"><span class="eyebrow light">${esc(r.label)} · ${esc(r.title.toUpperCase())}</span><div class="ov-topics">${r.topics.map(t => `<span>${esc(t)}</span>`).join('<b>+</b>')}</div></div>
       <div class="overlay ov-top" id="ov-top"></div>
       <aside class="side-panel" id="side"></aside>
       <section class="board-view" id="board"></section>
@@ -244,7 +232,7 @@ function updateGame() {
   $('#lock').textContent = r.locked ? '🔒 Dikunci' : '🔓 Terbuka';
   $('#veil').hidden = r.status !== 'paused';
   $('#done').hidden = !(r.players.length && st.finished === r.players.length);
-  const goal = `<div class="class-goal"><div class="cg-head"><span>Ketepatan kelas</span><strong>${st.accuracy}%</strong></div><span class="cg-bar"><i style="width:${Math.min(100, st.accuracy)}%"></i><b style="left:${TARGET}%"></b></span><small>Sasaran kelas ${TARGET}% · ${st.accuracy >= TARGET ? 'sasaran dicapai! أَحْسَنْتُمْ' : 'bantu rakan, kita naik bersama'}</small></div>`;
+  const goal = `<div class="class-goal"><div class="cg-head"><span>Ketepatan kelas</span><strong>${st.accuracy}%</strong></div><span class="cg-bar"><i style="width:${Math.min(100, st.accuracy)}%"></i><b style="left:${TARGET}%"></b></span><small>Sasaran kelas ${TARGET}% · ${st.accuracy >= TARGET ? 'sasaran dicapai! Tahniah' : 'bantu rakan, kita naik bersama'}</small></div>`;
   if (calm()) $('#ov-top').innerHTML = `<h3>Kemajuan kelas</h3>${goal}<div class="side-stats">${statTiles(st)}</div>${st.offline ? `<p class="hint">⚠ ${st.offline} pendaki terputus sambungan</p>` : ''}`;
   else $('#ov-top').innerHTML = `<h3>Pendahulu</h3><ol class="mini-board">${r.players.slice(0, 5).map(p => `<li><span class="rk r${p.rank}">${p.rank}</span><span class="mb-av">${avatarSVG(p.avatar, { crop: 'head', label: '' })}</span><span class="mb-name">${esc(p.name)}</span><span class="mb-alt">${fmt(p.altitude)} m</span></li>`).join('') || '<li class="muted">Belum ada pendaki.</li>'}</ol>
     <div class="side-stats">${statTiles(st)}</div>${st.offline ? `<p class="hint">⚠ ${st.offline} pendaki terputus sambungan</p>` : ''}`;
@@ -268,7 +256,7 @@ function drawResults() {
   <main class="results-page">${resultsView(r)}</main>`);
   $('#csv').onclick = () => {
     const blob = new Blob(['﻿' + csvFor(r)], { type: 'text/csv;charset=utf-8' });
-    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `rabbaniyyah-${r.set || 'level' + r.level}-${r.code}.csv` });
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `tayammum-${r.set}-${r.code}.csv` });
     a.click(); URL.revokeObjectURL(a.href);
   };
   $('#again').onclick = () => { storage.remove(KEY); socket.emit('leave', {}, () => {}); history.replaceState(null, '', location.pathname); showSetup(); };

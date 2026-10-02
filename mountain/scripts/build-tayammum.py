@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BANK = ROOT.parent / "00_bank" / "bank_tayammum.json"
-TOPIC_TITLE = "التَّيَمُّمُ"
+TOPIC_TITLE = "Tayammum"
 FLAG = re.compile(r"\s*\[SAHKAN[^\]]*\]")
 
 bank = json.loads(BANK.read_text(encoding="utf-8"))

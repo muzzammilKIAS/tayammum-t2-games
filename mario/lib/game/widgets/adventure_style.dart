@@ -68,6 +68,13 @@ class GameFrame extends StatelessWidget {
       textDirection: TextDirection.ltr,
       child: Scaffold(
         appBar: AppBar(
+          leading: Navigator.canPop(context)
+              ? IconButton(
+                  tooltip: 'Kembali',
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.maybePop(context),
+                )
+              : null,
           title: Text(
             title,
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),

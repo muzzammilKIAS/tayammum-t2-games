@@ -10,7 +10,7 @@ after(() => new Promise(r => ioServer.close(() => r())));
 
 const connect = () => new Promise(r => { const s = client(url, { transports: ['websocket'], forceNew: true }); s.on('connect', () => r(s)); });
 const call = (s, ev, data = {}) => new Promise((res, rej) => s.emit(ev, data, r => r.ok ? res(r) : rej(new Error(r.error))));
-const next = (s, ev) => new Promise(r => s.once(ev, r));
+const next = (s, ev) => new Promise(r => { const h = v => { if (ev === 'question' && !v) return; s.off(ev, h); r(v); }; s.on(ev, h); });
 // Simpan paparan terkini yang diterima host supaya acara yang tiba lebih awal tidak terlepas.
 const latest = new WeakMap();
 const track = s => { s.on('room', room => latest.set(s, room)); return s; };
@@ -24,7 +24,7 @@ const wrongFor = (code, q) => { const a = answerFor(code, q); return q.type === 
 
 test('host → 5 pemain → mendaki langsung → puncak → host muat semula', async () => {
   const host = track(await connect());
-  const created = await call(host, 'create', { level: 1, settings: { count: 8, timer: 0 } });
+  const created = await call(host, 'create', { set: 'tayammum-tebus', settings: { timer: 0 } });
   const code = created.room.code;
   assert.match(code, /^\d{6}$/);
 
@@ -45,7 +45,7 @@ test('host → 5 pemain → mendaki langsung → puncak → host muat semula', a
   const fa = await call(A.s, 'answer', { id: qs[0].id, answer: answerFor(code, qs[0]) });
   assert.equal(fa.feedback.correct, true);
   let room = await upd;
-  assert.equal(room.players.find(p => p.id === A.id).altitude, 375);
+  assert.equal(room.players.find(p => p.id === A.id).altitude, 300);
   assert.ok(room.players.filter(p => p.id !== A.id).every(p => p.correct === 0), 'hanya A bergerak');
 
   const fb = await call(B.s, 'answer', { id: qs[1].id, answer: wrongFor(code, qs[1]) });
@@ -59,7 +59,7 @@ test('host → 5 pemain → mendaki langsung → puncak → host muat semula', a
   assert.equal(room.players[0].id === A.id || room.players[0].id === C.id, true, 'kedudukan dikemas kini');
 
   // A menjawab semua dengan betul hingga ke puncak
-  for (let i = 1; i < 8; i++) {
+  for (let i = 1; i < 10; i++) {
     const w = next(A.s, 'question'); await call(A.s, 'next'); const q = await w;
     await call(A.s, 'answer', { id: q.id, answer: answerFor(code, q) });
   }
@@ -97,7 +97,7 @@ test('host → 5 pemain → mendaki langsung → puncak → host muat semula', a
 
 test('ralat: kod salah, nama sama, nama berbahaya, sesi dikunci', async () => {
   const host = await connect(), s = await connect(), s2 = await connect(), s3 = await connect();
-  const { room } = await call(host, 'create', { level: 2 });
+  const { room } = await call(host, 'create', { set: 'tayammum-asas' });
   await assert.rejects(call(s, 'join', { code: '000000', name: 'Ali' }), /tidak ditemui/);
   await call(s, 'join', { code: room.code, name: 'Ali' });
   await assert.rejects(call(s2, 'join', { code: room.code, name: 'ali' }), /sudah digunakan/);

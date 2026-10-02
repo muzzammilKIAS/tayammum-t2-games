@@ -5,7 +5,7 @@ import 'game/screens/home_screen.dart';
 import 'game/widgets/adventure_style.dart';
 
 /// Pengembaraan Tayammum: game platform solo (tanpa Firebase / pelayan).
-/// Dibina daripada modul Adventure UMT3033; kandungan soalan ialah
+/// Game platform solo; kandungan soalan ialah
 /// bank_tayammum.json (Tingkatan 2, DSKP KSSM SK 4.10).
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

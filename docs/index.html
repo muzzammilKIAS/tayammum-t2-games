@@ -2,51 +2,246 @@
 <html lang="ms">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tayammum Tingkatan 2</title>
+<title>Pusat Permainan Tayammum</title>
+<meta name="description" content="Dua permainan kelas untuk tajuk Tayammum, Pendidikan Islam Tingkatan 2 (SK 4.10).">
 <style>
-:root{--bg:#faf6ec;--ink:#12362b;--card:#fff;--gold:#b8892b;--line:#e3dccb}
-@media (prefers-color-scheme:dark){:root{--bg:#0f241d;--ink:#f1ead6;--card:#16352b;--line:#2b4a3e}}
+:root{
+  --bg:#f7f2e6; --surface:#ffffff; --ink:#12362b; --muted:#5b6f66; --line:#e3dccb;
+  --brand:#12362b; --on-brand:#f7f2e6; --gold:#b8892b; --soft:#eef3ec; --ring:#b8892b;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e211a; --surface:#15332a; --ink:#f1ead6; --muted:#a9bdb3; --line:#2a4a3d;
+    --brand:#e0b457; --on-brand:#10231c; --gold:#e0b457; --soft:#1b3d33; --ring:#e0b457;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e211a; --surface:#15332a; --ink:#f1ead6; --muted:#a9bdb3; --line:#2a4a3d;
+  --brand:#e0b457; --on-brand:#10231c; --gold:#e0b457; --soft:#1b3d33; --ring:#e0b457;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
-main{max-width:760px;margin:0 auto;padding:32px 16px 56px}
-h1{font-size:1.7rem;margin:0 0 4px}
-p.sub{margin:0 0 24px;color:var(--gold);font-weight:600}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
-.card h2{margin:0 0 6px;font-size:1.1rem}
-.card p{margin:4px 0 12px}
-a.btn{display:inline-block;margin:4px 8px 4px 0;padding:9px 14px;border-radius:10px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600}
-@media (prefers-color-scheme:dark){a.btn{background:var(--gold);color:#10231c}}
-small{color:inherit;opacity:.75}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+
+header.top{padding:28px 0 8px}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{width:44px;height:44px;border-radius:12px;background:var(--brand);display:grid;place-items:center;flex:none}
+.mark svg{width:26px;height:26px}
+h1{font-size:1.55rem;line-height:1.2;margin:0}
+.sub{margin:2px 0 0;color:var(--gold);font-weight:600;font-size:.95rem}
+.lead{margin:14px 0 0;color:var(--muted);max-width:60ch}
+
+nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-top:18px}
+nav.tabs .wrap{display:flex;gap:6px;padding-top:8px;padding-bottom:8px;overflow-x:auto}
+nav.tabs a{padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;color:var(--muted);white-space:nowrap}
+nav.tabs a:hover{background:var(--soft);color:var(--ink)}
+
+section{padding:28px 0 8px}
+h2{font-size:1.2rem;margin:0 0 4px}
+.hint{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:760px){.grid.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card h3{margin:0;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.art{height:92px;border-radius:12px;background:var(--soft);display:grid;place-items:center;overflow:hidden}
+.art svg{width:100%;height:100%}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border-radius:12px;background:var(--brand);color:var(--on-brand);font:inherit;font-weight:700;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.alt:hover{background:var(--soft)}
+.btn.small{min-height:36px;padding:0 12px;font-size:.88rem;border-radius:10px}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold)}
+
+.sets{display:grid;gap:8px}
+.set{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.set b{display:block;font-size:.97rem}
+.set span{color:var(--muted);font-size:.85rem}
+
+table{width:100%;border-collapse:collapse;font-size:.93rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--soft);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.scroll{overflow-x:auto}
+
+ol.steps{margin:0;padding-left:1.2rem;color:var(--muted)}
+ol.steps li{margin:4px 0}
+ol.steps b{color:var(--ink)}
+.notice{border-left:4px solid var(--gold);background:var(--soft);padding:12px 14px;border-radius:0 12px 12px 0;color:var(--muted);font-size:.93rem}
+
+dialog{border:0;border-radius:18px;padding:22px;max-width:min(92vw,440px);background:var(--surface);color:var(--ink);text-align:center}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog img{width:min(78vw,340px);height:auto;border-radius:10px;background:#fff;padding:6px}
+dialog h4{margin:0 0 10px}
+dialog p{word-break:break-all;color:var(--muted);font-size:.8rem;margin:10px 0}
+footer{padding:36px 0 48px;color:var(--muted);font-size:.85rem}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(20px);background:var(--brand);color:var(--on-brand);padding:10px 16px;border-radius:999px;font-weight:600;opacity:0;pointer-events:none;transition:.2s}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
 </style>
 </head>
 <body>
-<main>
-<h1>Tayammum: Tingkatan 2</h1>
-<p class="sub">Pendidikan Islam KSSM, Standard Kandungan 4.10</p>
+<header class="top">
+ <div class="wrap">
+  <div class="brand">
+   <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 32 32" fill="none"><path d="M3 26 12 9l5 8 3-4 9 13H3Z" fill="#e0b457"/><circle cx="24" cy="7" r="2.6" fill="#f7f2e6"/></svg>
+   </div>
+   <div>
+    <h1>Pusat Permainan Tayammum</h1>
+    <p class="sub">Pendidikan Islam Tingkatan 2 &middot; SK 4.10</p>
+   </div>
+  </div>
+  <p class="lead">Dua permainan kelas untuk menguji kefahaman sebab diharuskan, syarat, langkah dan pembatal tayammum. Pelajar boleh bermain sendiri; guru boleh memulakan sesi langsung di projektor.</p>
+ </div>
+</header>
 
-<div class="card">
-<h2>Permainan Pendakian (Rabbaniyyah Mountain)</h2>
-<p>Main sendiri di telefon atau komputer. Pilih set mengikut arahan guru.</p>
-<a class="btn" href="mountain/solo.html?set=tayammum-asas">Asas</a>
-<a class="btn" href="mountain/solo.html?set=tayammum-tebus">Pusingan Tebus</a>
-<a class="btn" href="mountain/solo.html?set=tayammum-klinik">Klinik Fiqah</a>
-</div>
+<nav class="tabs" aria-label="Bahagian halaman">
+ <div class="wrap">
+  <a href="#pelajar">Pelajar</a>
+  <a href="#guru">Guru</a>
+  <a href="#kumpulan">Pembahagian kumpulan</a>
+  <a href="#pautan">Pautan dan QR</a>
+ </div>
+</nav>
 
-<div class="card">
-<h2>Pengembaraan Tayammum (permainan platform)</h2>
-<p>Lompat, kutip, dan jawab soalan di setiap pintu. Gunakan kekunci A/D dan Space, atau butang pada skrin.</p>
-<a class="btn" href="mario/">Main sekarang</a>
-</div>
+<main class="wrap">
 
-<div class="card">
-<h2>Mod kelas langsung (untuk guru)</h2>
-<p>Guru memaparkan gunung di projektor dan pelajar menyertai dengan kod sesi. Mod ini memerlukan pelayan dan dihos di Render. Jika laman lambat dibuka, tunggu kira-kira satu minit kerana pelayan sedang bangun.</p>
-<a class="btn" href="https://tayammum-mountain.onrender.com/host.html">Buka halaman guru</a>
-<a class="btn" href="https://tayammum-mountain.onrender.com/">Pelajar menyertai</a>
-</div>
+<section id="pelajar" aria-labelledby="h-pelajar">
+ <h2 id="h-pelajar">Pilih permainan</h2>
+ <p class="hint">Buka di telefon atau komputer. Tiada log masuk diperlukan.</p>
+ <div class="grid two">
 
-<p><small>Kandungan soalan disediakan untuk tugasan pedagogi. Hukum mengikut mazhab Syafie pada aras buku teks Tingkatan 2.</small></p>
+  <article class="card">
+   <div class="art" aria-hidden="true">
+    <svg viewBox="0 0 320 92" preserveAspectRatio="xMidYMid slice"><rect width="320" height="92" fill="#dfe9e1"/><path d="M0 92 70 30l40 40 60-52 80 74H0Z" fill="#7fa593"/><path d="M60 92 140 22l55 70Z" fill="#2f6a56"/><path d="M130 33l10-11 10 11-10-3Z" fill="#fff"/><circle cx="260" cy="22" r="11" fill="#f3d58a"/></svg>
+   </div>
+   <span class="tag">Pendakian</span>
+   <h3>Pendakian Tayammum</h3>
+   <p>Jawab soalan untuk menaikkan pendaki ke puncak. Setiap jawapan ada penjelasan. Ada soalan susun langkah dan kes untuk dinilai.</p>
+   <div class="sets">
+    <div class="set"><div><b>Asas</b><span>16 soalan &middot; semua pelajar</span></div><a class="btn small" href="mountain/solo.html?set=tayammum-asas">Main</a></div>
+    <div class="set"><div><b>Pusingan Tebus</b><span>10 soalan &middot; pemulihan</span></div><a class="btn small" href="mountain/solo.html?set=tayammum-tebus">Main</a></div>
+    <div class="set"><div><b>Klinik Fiqah</b><span>12 kes &middot; pengayaan</span></div><a class="btn small" href="mountain/solo.html?set=tayammum-klinik">Main</a></div>
+   </div>
+  </article>
+
+  <article class="card">
+   <div class="art" aria-hidden="true">
+    <svg viewBox="0 0 320 92" preserveAspectRatio="xMidYMid slice"><rect width="320" height="92" fill="#f2e3bd"/><circle cx="262" cy="24" r="13" fill="#fff3c8"/><path d="M0 70c40-18 80-18 120 0s80 18 120 0 60-12 80-6v28H0Z" fill="#d9b765"/><rect x="40" y="54" width="46" height="9" rx="3" fill="#12362b"/><rect x="132" y="44" width="46" height="9" rx="3" fill="#12362b"/><rect x="220" y="34" width="46" height="9" rx="3" fill="#12362b"/><circle cx="62" cy="40" r="7" fill="#12362b"/><rect x="58" y="44" width="8" height="10" fill="#12362b"/></svg>
+   </div>
+   <span class="tag">Platform</span>
+   <h3>Pengembaraan Tayammum</h3>
+   <p>Berlari dan melompat merentas padang pasir, kemudian buka pintu soalan. Tiga tahap mengikut keperluan pelajar. Kawalan: A/D dan Space, atau butang pada skrin.</p>
+   <div class="sets">
+    <div class="set"><div><b>Tahap 1 &middot; Asas</b><span>16 pintu</span></div></div>
+    <div class="set"><div><b>Tahap 2 &middot; Tebus</b><span>10 pintu</span></div></div>
+    <div class="set"><div><b>Tahap 3 &middot; Klinik</b><span>12 pintu</span></div></div>
+   </div>
+   <div class="row"><a class="btn" href="mario/">Main sekarang</a></div>
+  </article>
+
+ </div>
+</section>
+
+<section id="guru" aria-labelledby="h-guru">
+ <h2 id="h-guru">Untuk guru</h2>
+ <p class="hint">Mod kelas langsung memaparkan gunung di projektor dan pelajar menyertai dengan kod sesi.</p>
+ <div class="grid two">
+  <article class="card">
+   <h3>Mulakan sesi langsung</h3>
+   <ol class="steps">
+    <li>Buka <b>halaman guru</b> pada komputer yang disambung ke projektor.</li>
+    <li>Pilih <b>Set Guru</b> (Asas, Pusingan Tebus atau Klinik Fiqah) dan hidupkan <b>Mod selamat</b>.</li>
+    <li>Tekan <b>Cipta sesi</b>. Pelajar mengimbas kod QR yang dipaparkan atau memasukkan kod 6 digit.</li>
+    <li>Selepas tamat, muat turun analisis soalan (CSV) untuk melihat soalan yang perlu diulang.</li>
+   </ol>
+   <div class="row"><a class="btn" href="https://tayammum-mountain.onrender.com/host.html">Buka halaman guru</a><a class="btn alt" href="https://tayammum-mountain.onrender.com/">Halaman pelajar</a></div>
+  </article>
+  <article class="card">
+   <h3>Sebelum kelas</h3>
+   <div class="notice">Pelayan langsung dihos di pelan percuma Render dan tidur bila tidak digunakan. Buka halaman guru kira-kira satu minit sebelum kelas supaya ia sempat bangun.</div>
+   <div class="notice">Mod selamat menyembunyikan kedudukan dan podium supaya fokus pelajar ialah hujah dan kefahaman, bukan kelajuan.</div>
+   <div class="notice">Sediakan salinan cetak kad kes sebagai sandaran jika talian internet sekolah terputus.</div>
+  </article>
+ </div>
+</section>
+
+<section id="kumpulan" aria-labelledby="h-kumpulan">
+ <h2 id="h-kumpulan">Pembahagian kumpulan</h2>
+ <p class="hint">Cadangan guru, bukan peraturan tetap. Kumpulan tidak dilabel di hadapan pelajar.</p>
+ <div class="scroll">
+ <table>
+  <thead><tr><th>Peringkat</th><th>Pendakian</th><th>Pengembaraan</th><th>Tujuan</th></tr></thead>
+  <tbody>
+   <tr><td>Kesan tahap</td><td>Asas</td><td>Tahap 1</td><td>Semua pelajar. Keputusan bersama semakan amali menentukan kumpulan.</td></tr>
+   <tr><td>Kumpulan A</td><td>Pusingan Tebus</td><td>Tahap 2</td><td>Pemulihan: langkah satu demi satu, penjelasan serta-merta.</td></tr>
+   <tr><td>Kumpulan B</td><td>Klinik Fiqah</td><td>Tahap 3</td><td>Pengayaan: kes dan penilaian (KBAT).</td></tr>
+  </tbody>
+ </table>
+ </div>
+</section>
+
+<section id="pautan" aria-labelledby="h-pautan">
+ <h2 id="h-pautan">Pautan dan kod QR</h2>
+ <p class="hint">Salin pautan untuk kumpulan kelas, atau paparkan kod QR pada projektor.</p>
+ <div class="grid two">
+  <article class="card">
+   <div class="set"><div><b>Dashboard ini</b></div><div class="row"><button class="btn alt small" data-copy="">Salin</button><button class="btn alt small" data-qr="dashboard" data-title="Dashboard">QR</button></div></div>
+   <div class="set"><div><b>Pendakian &middot; Asas</b></div><div class="row"><button class="btn alt small" data-copy="mountain/solo.html?set=tayammum-asas">Salin</button><button class="btn alt small" data-qr="mountain-asas" data-title="Pendakian: Asas">QR</button></div></div>
+   <div class="set"><div><b>Pendakian &middot; Tebus</b></div><div class="row"><button class="btn alt small" data-copy="mountain/solo.html?set=tayammum-tebus">Salin</button><button class="btn alt small" data-qr="mountain-tebus" data-title="Pendakian: Tebus">QR</button></div></div>
+  </article>
+  <article class="card">
+   <div class="set"><div><b>Pendakian &middot; Klinik Fiqah</b></div><div class="row"><button class="btn alt small" data-copy="mountain/solo.html?set=tayammum-klinik">Salin</button><button class="btn alt small" data-qr="mountain-klinik" data-title="Pendakian: Klinik Fiqah">QR</button></div></div>
+   <div class="set"><div><b>Pengembaraan Tayammum</b></div><div class="row"><button class="btn alt small" data-copy="mario/">Salin</button><button class="btn alt small" data-qr="mario" data-title="Pengembaraan Tayammum">QR</button></div></div>
+   <div class="set"><div><b>Halaman guru (langsung)</b></div><div class="row"><button class="btn alt small" data-copy="https://tayammum-mountain.onrender.com/host.html">Salin</button></div></div>
+  </article>
+ </div>
+</section>
+
 </main>
+
+<footer>
+ <div class="wrap">
+  Kandungan soalan disediakan untuk tugasan pedagogi. Hukum mengikut mazhab Syafie pada aras buku teks Tingkatan 2 dan perlu disemak dengan buku teks sebelum digunakan di dalam kelas.
+ </div>
+</footer>
+
+<dialog id="qr"><h4 id="qrTitle"></h4><img id="qrImg" alt="Kod QR"><p id="qrUrl"></p><form method="dialog"><button class="btn">Tutup</button></form></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite">Pautan disalin</div>
+
+<script>
+(function(){
+  var base = location.href.split('#')[0].replace(/[^\/]*$/, '');
+  var toast = document.getElementById('toast'), timer;
+  function say(m){ toast.textContent = m; toast.classList.add('on'); clearTimeout(timer); timer = setTimeout(function(){ toast.classList.remove('on'); }, 1800); }
+  function abs(p){ return /^https?:/.test(p) ? p : base + p; }
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var url = abs(b.getAttribute('data-copy'));
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function(){ say('Pautan disalin'); }, function(){ window.prompt('Salin pautan ini:', url); });
+      } else { window.prompt('Salin pautan ini:', url); }
+    });
+  });
+  var dlg = document.getElementById('qr');
+  document.querySelectorAll('[data-qr]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var k = b.getAttribute('data-qr');
+      document.getElementById('qrTitle').textContent = b.getAttribute('data-title');
+      document.getElementById('qrImg').src = 'qr/' + k + '.svg';
+      var m = { 'dashboard':'', 'mountain-asas':'mountain/solo.html?set=tayammum-asas', 'mountain-tebus':'mountain/solo.html?set=tayammum-tebus', 'mountain-klinik':'mountain/solo.html?set=tayammum-klinik', 'mario':'mario/' };
+      document.getElementById('qrUrl').textContent = abs(m[k]);
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -17,7 +17,9 @@ class AdventureHomeScreen extends StatelessWidget {
           children: [
             AdventureCard(
               color: navy,
-              padding: const EdgeInsets.all(32),
+              padding: EdgeInsets.all(
+                MediaQuery.sizeOf(context).width < 480 ? 24 : 32,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -31,11 +33,13 @@ class AdventureHomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const Text(
+                  Text(
                     'Pengembaraan\nTayammum',
                     style: TextStyle(
                       color: cream,
-                      fontSize: 44,
+                      fontSize: MediaQuery.sizeOf(context).width < 480
+                          ? 34
+                          : 44,
                       height: 1.1,
                       fontWeight: FontWeight.w800,
                       letterSpacing: -1.5,
@@ -43,7 +47,7 @@ class AdventureHomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   const Text(
-                    'Tiga level. Satu pengembaraan.\nBerlari merentas padang pasir dan buka setiap pintu soalan dengan ilmu tayammum.',
+                    'Tiga tahap. Satu pengembaraan.\nBerlari merentas padang pasir dan buka setiap pintu soalan dengan ilmu tayammum.',
                     style: TextStyle(color: sky, fontSize: 15, height: 1.7),
                   ),
                   const SizedBox(height: 28),
@@ -74,7 +78,7 @@ class AdventureHomeScreen extends StatelessWidget {
                       width,
                       Icons.explore_outlined,
                       'MULAKAN PENGEMBARAAN',
-                      'Pilih perantau dan mulakan level mengikut keperluan anda.',
+                      'Pilih perantau dan mulakan tahap mengikut keperluan anda.',
                       '/game/solo',
                     ),
                   ],
@@ -209,7 +213,7 @@ class _SoloScreenState extends State<SoloScreen> {
                           child: Text(
                             _store!.resume(level.id)?.finished == false
                                 ? 'Sambung di pusat semak →'
-                                : 'Mulakan level →',
+                                : 'Mulakan tahap →',
                           ),
                         ),
                       ),

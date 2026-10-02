@@ -21,4 +21,4 @@ export const storage = {
   remove(key) { try { localStorage.removeItem(key); } catch {} },
 };
 
-export const brand = (href = './') => `<a class="brand" href="${href}" aria-label="Rabbaniyyah Mountain Challenge — laman utama"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M3 26 13 9l5 8 3-4 8 13z" fill="currentColor"/><path d="m13 9 2.6 4.4-2.6-1-2.4 1.6z" fill="#f4e6b8"/></svg></span><span>RABBANIYYAH<small>MOUNTAIN CHALLENGE</small></span></a>`;
+export const brand = (href = './') => `<a class="brand" href="${href}" aria-label="Pendakian Tayammum — laman utama"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M3 26 13 9l5 8 3-4 8 13z" fill="currentColor"/><path d="m13 9 2.6 4.4-2.6-1-2.4 1.6z" fill="#f4e6b8"/></svg></span><span>PENDAKIAN<small>TAYAMMUM · TINGKATAN 2</small></span></a>`;

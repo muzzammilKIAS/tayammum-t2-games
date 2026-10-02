@@ -123,7 +123,7 @@ class WorldCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'LEVEL $level',
+                          'TAHAP $level',
                           style: const TextStyle(
                             color: gold,
                             fontWeight: FontWeight.w800,

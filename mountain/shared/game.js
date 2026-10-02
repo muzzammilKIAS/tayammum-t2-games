@@ -1,27 +1,8 @@
-import topics from '../content/topics.json' with { type: 'json' };
 import sets from '../content/sets.json' with { type: 'json' };
 
-export { topics, sets };
+export { sets };
 export const SUMMIT_METRES = 3000;
-export const QUESTION_COUNTS = [8, 12, 16];
 export const TIMER_OPTIONS = [0, 15, 20, 30, 45, 60];
-
-const scenes = [
-  ['Green Trail', 'Jejak pertama di lereng hijau.'],
-  ['Forest Path', 'Merentasi hutan yang redup.'],
-  ['Waterfall Ridge', 'Singgah di rabung air terjun.'],
-  ['Cloud Pass', 'Melangkah di celah awan.'],
-  ['Rocky Mountain', 'Laluan berbatu yang mencabar.'],
-  ['High Altitude', 'Semakin tinggi, semakin dekat.'],
-  ['Final Summit', 'Persinggahan terakhir menuju puncak.'],
-];
-
-/** 7 level; setiap level = 2 topik berturutan. Level tanpa 2 topik sebenar ditanda tidak tersedia. */
-export const levels = scenes.map(([name, tagline], i) => {
-  const pair = [topics[i * 2], topics[i * 2 + 1]].filter(Boolean);
-  return { id: i + 1, name, tagline, topicIds: [i * 2 + 1, i * 2 + 2], topics: pair, available: pair.length === 2 };
-});
-export const levelNames = levels.map(l => l.name);
 
 export function shuffle(array, rng = Math.random) {
   const a = [...array];
@@ -29,80 +10,7 @@ export function shuffle(array, rng = Math.random) {
   return a;
 }
 
-function pickOptions(correct, pool, rng, n = 4) {
-  const others = shuffle([...new Set(pool)].filter(x => x !== correct), rng).slice(0, n - 1);
-  return shuffle([correct, ...others], rng);
-}
-
-/** Bank soalan penuh untuk satu topik, semuanya daripada data sumber. */
-export function topicBank(topic, rng = Math.random) {
-  const base = { topicId: topic.id, topicTitle: topic.title, sourceTopic: topic.title, sourceReference: topic.source };
-  const meanings = topic.vocab.map(v => v.meaning), words = topic.vocab.map(v => v.word);
-  const bank = [];
-  topic.vocab.forEach((v, i) => {
-    const o1 = pickOptions(v.meaning, meanings, rng);
-    bank.push({ ...base, id: `t${topic.id}-v${i}`, concept: `v${i}`, type: 'vocabulary', difficulty: 'easy',
-      prompt: 'Apakah maksud perkataan ini?', questionAr: v.word, options: o1, optionsDir: 'ltr', answer: o1.indexOf(v.meaning),
-      correctText: v.meaning, explanation: `${v.word} = ${v.meaning}`, sourceSection: 'Kosa kata' });
-    const o2 = pickOptions(v.word, words, rng);
-    bank.push({ ...base, id: `t${topic.id}-m${i}`, concept: `v${i}`, type: 'translation', difficulty: 'medium',
-      prompt: 'Pilih perkataan Arab yang betul', questionMs: v.meaning, options: o2, optionsDir: 'rtl', answer: o2.indexOf(v.word),
-      correctText: v.word, explanation: `${v.meaning} = ${v.word}`, sourceSection: 'Kosa kata' });
-  });
-  const fillPool = [...topic.fillBank, ...topic.fill.map(f => f.answer)];
-  topic.fill.forEach((f, i) => {
-    const o = pickOptions(f.answer, fillPool, rng);
-    bank.push({ ...base, id: `t${topic.id}-f${i}`, concept: `f${i}`, type: 'fill-blank', difficulty: 'medium',
-      prompt: 'Lengkapkan ayat', questionAr: [f.before, '＿＿＿', f.after].filter(Boolean).join(' '), options: o, optionsDir: 'rtl',
-      answer: o.indexOf(f.answer), correctText: f.answer, explanation: [f.before, f.answer, f.after].filter(Boolean).join(' '), sourceSection: 'Latihan: lengkapkan ayat' });
-  });
-  topic.qa.forEach((q, i) => {
-    const o = pickOptions(q.answer, q.options, rng);
-    bank.push({ ...base, id: `t${topic.id}-q${i}`, concept: `q${i}`, type: 'multiple-choice', difficulty: 'medium',
-      prompt: 'Pilih jawapan yang betul', questionAr: q.question, options: o, optionsDir: 'rtl', answer: o.indexOf(q.answer),
-      correctText: q.answer, explanation: `${q.question} — ${q.answer}`, sourceSection: 'Latihan: soal jawab' });
-  });
-  topic.order.forEach((o, i) => {
-    bank.push({ ...base, id: `t${topic.id}-o${i}`, concept: `o${i}`, type: 'arrange', difficulty: 'hard',
-      prompt: 'Susun perkataan menjadi ayat', tokens: shuffle(o.tokens, rng), answer: o.sequence,
-      correctText: o.answer, explanation: o.answer, sourceSection: 'Latihan: susun perkataan' });
-  });
-  return bank;
-}
-
-// Taburan jenis bagi setiap topik: seimbang antara mudah, sederhana dan sukar.
-const typePlan = ['vocabulary', 'fill-blank', 'multiple-choice', 'arrange', 'translation', 'vocabulary', 'fill-blank', 'multiple-choice'];
-
-/** Pilih n soalan daripada satu topik, pelbagai jenis, tanpa ulang konsep yang sama. */
-export function pickFromTopic(topic, n, rng = Math.random) {
-  const byType = {};
-  for (const q of shuffle(topicBank(topic, rng), rng)) (byType[q.type] ??= []).push(q);
-  const chosen = [], concepts = new Set();
-  const take = type => {
-    const list = byType[type] || [];
-    const i = list.findIndex(q => !concepts.has(q.concept));
-    if (i < 0) return false;
-    const [q] = list.splice(i, 1); chosen.push(q); concepts.add(q.concept); return true;
-  };
-  for (let round = 0; chosen.length < n && round < 20; round++) {
-    let progressed = false;
-    for (const type of typePlan) { if (chosen.length >= n) break; progressed = take(type) || progressed; }
-    if (!progressed) break;
-  }
-  if (chosen.length < n) throw new Error(`Topik ${topic.id} tidak mempunyai ${n} soalan unik.`);
-  return chosen;
-}
-
-/** Soalan sesi: separuh daripada setiap topik level, disusun berselang-seli secara rawak. */
-export function questionsFor(level, count = 12, rng = Math.random) {
-  const l = levels[level - 1];
-  if (!l?.available) throw new Error('Kandungan level belum tersedia.');
-  if (!QUESTION_COUNTS.includes(count)) throw new Error('Bilangan soalan tidak sah.');
-  const [a, b] = l.topics.map(t => pickFromTopic(t, count / 2, rng));
-  return shuffle([...a, ...b], rng).map((q, i) => ({ ...q, id: `${q.id}#${i}`, level }));
-}
-
-/** Set guru: soalan tetap yang dibina khusus untuk satu pelajaran (mis. ulang kaji Unit 7–9). */
+/** Set guru: soalan tetap yang dibina khusus untuk satu pelajaran (Tayammum, Tingkatan 2). */
 export const findSet = id => sets.find(s => s.id === id) || null;
 export function questionsForSet(id, rng = Math.random) {
   const set = findSet(id);
@@ -110,7 +18,7 @@ export function questionsForSet(id, rng = Math.random) {
   return set.questions.map((raw, i) => {
     const base = { id: `${set.id}-${i}#${i}`, concept: `${set.id}-${i}`, setId: set.id, level: 0, type: raw.type, difficulty: 'medium',
       prompt: raw.prompt, topicId: raw.topic, topicTitle: raw.topicTitle, explanation: raw.explanation };
-    for (const k of ['questionAr', 'questionMs', 'image', 'imageAlt', 'audio']) if (raw[k]) base[k] = raw[k];
+    for (const k of ['questionMs', 'image', 'imageAlt']) if (raw[k]) base[k] = raw[k];
     if (raw.type === 'arrange') {
       let tokens = shuffle(raw.sequence, rng);
       for (let n = 0; tokens.every((t, j) => t === raw.sequence[j]) && n < 5; n++) tokens = shuffle(raw.sequence, rng);
@@ -118,7 +26,7 @@ export function questionsForSet(id, rng = Math.random) {
     }
     const correct = raw.options[raw.answer];
     const options = shuffle(raw.options, rng);
-    return { ...base, options, optionsDir: raw.optionsDir, answer: options.indexOf(correct), correctText: correct };
+    return { ...base, options, answer: options.indexOf(correct), correctText: correct };
   });
 }
 
@@ -193,7 +101,7 @@ export function analytics(players, questions) {
     topics: topicIds.map(id => ({ id, title: questions.find(q => q.topicId === id).topicTitle, accuracy: pct(answered.filter(a => a.topicId === id)) })),
     questions: questions.map((q, i) => {
       const list = answered.filter(a => a.index === i);
-      return { n: i + 1, type: q.type, topicTitle: q.topicTitle, text: q.questionAr || (q.audio ? `🎧 Audio: ${q.correctText}` : q.questionMs) || q.correctText, correctText: q.correctText, answered: list.length, accuracy: pct(list), needsReview: list.length > 0 && pct(list) < 60 };
+      return { n: i + 1, type: q.type, topicTitle: q.topicTitle, text: q.questionMs || q.correctText, correctText: q.correctText, answered: list.length, accuracy: pct(list), needsReview: list.length > 0 && pct(list) < 60 };
     }),
   };
 }

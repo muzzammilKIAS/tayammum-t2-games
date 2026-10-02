@@ -12,6 +12,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY server.js ./
 COPY shared ./shared
+COPY content ./content
 COPY --from=build /app/dist ./dist
 EXPOSE 8080
 CMD ["node", "server.js"]

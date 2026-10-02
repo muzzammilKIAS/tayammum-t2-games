@@ -47,7 +47,7 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
  */
 export function createMountain(el, { total = 12, compact = false, me = null, hideNames = false } = {}) {
   el.classList.add('mountain', compact ? 'is-compact' : 'is-full');
-  el.innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gunung pendakian dari Base Camp ke Puncak">${scene}<g class="stations"></g><g class="markers"></g><g class="cards"></g><g class="fx"></g></svg>`;
+  el.innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gunung pendakian dari Kem Pangkal ke Puncak">${scene}<g class="stations"></g><g class="markers"></g><g class="cards"></g><g class="fx"></g></svg>`;
   const svg = el.querySelector('svg'), path = svg.querySelector('.trail-bed'), progressPath = svg.querySelector('.trail-progress');
   const stationsG = svg.querySelector('.stations'), markersG = svg.querySelector('.markers'), fx = svg.querySelector('.fx'), cardsG = svg.querySelector('.cards');
   const markers = new Map();
@@ -57,7 +57,7 @@ export function createMountain(el, { total = 12, compact = false, me = null, hid
   function layout() {
     length = path.getTotalLength();
     points = Array.from({ length: total + 1 }, (_, i) => { const p = path.getPointAtLength(length * i / total); return { x: p.x, y: p.y }; });
-    const cps = [.25, .5, .75].map((f, i) => ({ f, label: `CHECKPOINT ${i + 1}` }));
+    const cps = [.25, .5, .75].map((f, i) => ({ f, label: `PERSINGGAHAN ${i + 1}` }));
     const label = (x, y, title, sub, cls = '') => `<g class="station ${cls}" transform="translate(${x} ${y})"><circle r="15" /><g class="station-tag" transform="translate(${x > 800 ? 26 : -26} -4)"><text class="t1" text-anchor="${x > 800 ? 'start' : 'end'}">${title}</text><text class="t2" y="22" text-anchor="${x > 800 ? 'start' : 'end'}">${sub}</text></g></g>`;
     const tick = (p, i) => `<circle class="step" cx="${p.x}" cy="${p.y}" r="5"><title>Soalan ${i}</title></circle>`;
     const base = points[0], top = points[total];
@@ -67,7 +67,7 @@ export function createMountain(el, { total = 12, compact = false, me = null, hid
     ];
     stationsG.innerHTML = points.slice(1, -1).map((p, i) => tick(p, i + 1)).join('') +
       cps.map(c => { const p = path.getPointAtLength(length * c.f); return label(p.x, p.y, c.label, `${fmt(SUMMIT_METRES * c.f)} m`, 'cp'); }).join('') +
-      `<g class="station base" transform="translate(${base.x} ${base.y})"><path d="M-34 0-2-46 30 0z" fill="#d9774d"/><path d="M-2-46 30 0H8z" fill="#b65e3b"/><path d="M-8 0-2-18 4 0z" fill="#5a2d1d"/><text class="t1" y="-84" text-anchor="middle">BASE CAMP</text><text class="t2" y="-62" text-anchor="middle">0 m</text></g>` +
+      `<g class="station base" transform="translate(${base.x} ${base.y})"><path d="M-34 0-2-46 30 0z" fill="#d9774d"/><path d="M-2-46 30 0H8z" fill="#b65e3b"/><path d="M-8 0-2-18 4 0z" fill="#5a2d1d"/><text class="t1" y="-84" text-anchor="middle">KEM PANGKAL</text><text class="t2" y="-62" text-anchor="middle">0 m</text></g>` +
       `<g class="station summit" transform="translate(${top.x} ${top.y})"><path d="M0 0V-64" stroke="#2b4a3f" stroke-width="4"/><path d="M2-64 46-52 2-38z" fill="#d7633f"/><text class="t1" x="56" y="-36">PUNCAK</text><text class="t2" x="56" y="-12">${fmt(SUMMIT_METRES)} m</text></g>`;
   }
 
@@ -121,7 +121,7 @@ export function createMountain(el, { total = 12, compact = false, me = null, hid
     const shown = base || hideNames ? [] : list.slice(0, 4);
     const rows = shown.map(p => `${p.finished ? '✓ ' : p.rank <= 3 && p.correct > 0 ? ['①', '②', '③'][p.rank - 1] + ' ' : ''}${p.name.length > 14 ? p.name.slice(0, 13) + '…' : p.name}`);
     const more = base || hideNames ? 0 : list.length - shown.length;
-    return [base ? `${list.length} pendaki di Base Camp` : `${list.length} pendaki`, ...rows, ...(more > 0 ? [`+${more} lagi`] : [])];
+    return [base ? `${list.length} pendaki di Kem Pangkal` : `${list.length} pendaki`, ...rows, ...(more > 0 ? [`+${more} lagi`] : [])];
   }
   function cardSize(c) { const lines = cardLines(c); return { w: Math.max(...lines.map((l, i) => l.length * (i ? 9.6 : 8.4))) + 28, h: 16 + lines.length * 23 }; }
   function groupCard(c) {
