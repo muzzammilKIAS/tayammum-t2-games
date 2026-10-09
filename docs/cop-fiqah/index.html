@@ -60,17 +60,17 @@ button:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
 </head>
 <body>
 <header><div class="in"><h1>Cop Fiqah</h1><span class="jawi" lang="ms-Arab" dir="rtl">چوڤ فقه</span>
-<p>Pilih kes. Baca bersama pasangan, cop SAH atau TIDAK SAH pada laporan dan tulis alasan. Kemudian ketik Semak.</p></div></header>
+<p>Pilih kes. Baca bersama pasangan, cop SAH atau TIDAK SAH pada laporan, tanda kaitan dan tulis satu ayat alasan. Kemudian ketik Semak.</p></div></header>
 <main>
   <section id="home" aria-label="Senarai kes">
     <div class="grid" id="grid"></div>
-    <div class="legend"><span><i style="background:var(--kuning)"></i>Set Kuning: kes 1, 3, 5, 6</span><span><i style="background:var(--biru)"></i>Set Biru: kes 2, 4, 7, 8</span></div>
+    <div class="legend"><span>Empat kes daripada buku teks, Pelajaran 16. Jawab semua kes 1 hingga 4.</span></div>
   </section>
   <section id="view" class="view" hidden aria-live="polite">
     <div class="top"><span class="pill" id="vPill"></span><button class="big b-alt" id="back" type="button">Semua kes</button></div>
     <p class="kes" id="vText"></p>
     <p class="ask" id="vAsk"></p>
-    <div class="step" id="vStep">Bincang dengan pasangan. Cop keputusan pada laporan dan tulis alasan dahulu.</div>
+    <div class="step" id="vStep">Bincang dengan pasangan. Tampal cop, tanda kaitan dan tulis alasan dahulu.</div>
     <div class="row" id="checkRow"><button class="big b-main" id="check" type="button">Semak jawapan</button></div>
     <div class="result" id="res" hidden>
       <div class="stamp" id="stamp"></div>
@@ -83,13 +83,9 @@ button:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
 <script>
 var KES=[
  {n:1,set:'kuning',nama:'Ali',t:'Ali bertayammum kerana tiada air. Sebelum sempat memulakan solat, dia ternampak sebuah perigi yang airnya boleh digunakan.',q:'Bolehkah Ali bersolat dengan tayammum itu?',sah:false,rel:'Perkara yang membatalkan tayammum (kedua)',why:'Ada air sebelum solat dimulakan membatalkan tayammum. Ali perlu berwuduk dengan air perigi itu.'},
- {n:2,set:'biru',nama:'Farid',t:'Farid menepuk debu, menyapu muka dan tangannya mengikut urutan, tetapi dia terlupa berniat.',q:'Sahkah tayammum Farid?',sah:false,rel:'Rukun tayammum (pertama: niat)',why:'Niat ialah rukun pertama tayammum. Tanpa niat, tayammum tidak sah dan perlu diulang.'},
- {n:3,set:'kuning',nama:'Hafiz',t:'Hafiz tidak menemui tanah, lalu dia bertayammum menggunakan tepung gandum.',q:'Sahkah tayammum Hafiz?',sah:false,rel:'Syarat tayammum (keempat)',why:'Debu mestilah debu tanah yang tidak bercampur dengan bahan lain seperti tepung atau kapur.'},
- {n:4,set:'biru',nama:'Nurul',t:'Nurul bertayammum pada pukul 12.00 tengah hari kerana mahu bersedia awal, sedangkan waktu Zohor masuk pada pukul 1.15 petang.',q:'Sahkah tayammum Nurul?',sah:false,rel:'Syarat tayammum (pertama)',why:'Tayammum hanya boleh dilakukan selepas masuk waktu solat.'},
- {n:5,set:'kuning',nama:'Perkhemahan',t:'Dalam satu perkhemahan, waktu Zohor sudah masuk. Air yang tinggal hanya cukup untuk diminum sepanjang hari, lalu peserta bertayammum dengan debu tanah yang suci.',q:'Sahkah tayammum mereka?',sah:true,rel:'Sebab diharuskan tayammum (pertama)',why:'Tayammum diharuskan apabila air tidak cukup kerana keperluan lain seperti untuk diminum.'},
- {n:6,set:'kuning',nama:'Zaid',t:'Zaid demam teruk dan doktor melarangnya terkena air. Selepas masuk waktu Asar, dia bertayammum dengan debu tanah yang suci mengikut tertib.',q:'Sahkah tayammum Zaid?',sah:true,rel:'Sebab diharuskan tayammum (ketiga)',why:'Tayammum diharuskan apabila tidak dapat menggunakan air kerana penyakit atau sakit.'},
- {n:7,set:'biru',nama:'Aiman',t:'Aiman berada di kawasan yang sangat sejuk. Menggunakan air boleh memudaratkan kesihatannya, lalu dia bertayammum selepas masuk waktu Subuh.',q:'Sahkah tayammum Aiman?',sah:true,rel:'Sebab diharuskan tayammum (kedua)',why:'Sejuk yang boleh memudaratkan kesihatan ialah sebab tayammum diharuskan.'},
- {n:8,set:'biru',nama:'Hana',t:'Hana mendapati ada najis pada tangannya, tetapi dia terus bertayammum tanpa menghilangkan najis itu.',q:'Sahkah tayammum Hana?',sah:false,rel:'Syarat tayammum (ketiga)',why:'Najis mesti dihilangkan terlebih dahulu sebelum bertayammum.'}
+ {n:2,set:'kuning',nama:'Hafiz',t:'Hafiz tidak menemui tanah, lalu dia bertayammum menggunakan tepung gandum.',q:'Sahkah tayammum Hafiz?',sah:false,rel:'Syarat tayammum (keempat)',why:'Debu mestilah debu tanah yang tidak bercampur dengan bahan lain seperti tepung atau kapur.'},
+ {n:3,set:'kuning',nama:'Perkhemahan',t:'Dalam satu perkhemahan, waktu Zohor sudah masuk. Air yang tinggal hanya cukup untuk diminum sepanjang hari, lalu peserta bertayammum dengan debu tanah yang suci.',q:'Sahkah tayammum mereka?',sah:true,rel:'Sebab diharuskan tayammum (pertama)',why:'Tayammum diharuskan apabila air tidak cukup kerana keperluan lain seperti untuk diminum.'},
+ {n:4,set:'kuning',nama:'Zaid',t:'Zaid demam teruk dan doktor melarangnya terkena air. Selepas masuk waktu Asar, dia bertayammum dengan debu tanah yang suci mengikut tertib.',q:'Sahkah tayammum Zaid?',sah:true,rel:'Sebab diharuskan tayammum (ketiga)',why:'Tayammum diharuskan apabila tidak dapat menggunakan air kerana penyakit atau sakit.'}
 ];
 var KEY='cop-fiqah-siap', done={};
 try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){done={}}
@@ -99,7 +95,7 @@ function drawGrid(){
   grid.innerHTML='';
   KES.forEach(function(k,i){
     var b=document.createElement('button');b.type='button';b.className='tile '+k.set;
-    b.innerHTML='<b>'+k.n+'</b><span>Kes '+k.nama+'</span><small>Set '+(k.set==='kuning'?'Kuning':'Biru')+'</small>'+(done[k.n]?'<em class="done" style="background:'+(k.sah?'var(--sah)':'var(--tidak)')+'">SIAP</em>':'');
+    b.innerHTML='<b>'+k.n+'</b><span>Kes '+k.nama+'</span><small>Cop Fiqah</small>'+(done[k.n]?'<em class="done" style="background:'+(k.sah?'var(--sah)':'var(--tidak)')+'">SIAP</em>':'');
     b.addEventListener('click',function(){open(i)});grid.appendChild(b);
   });
 }
@@ -129,7 +125,7 @@ document.getElementById('check').addEventListener('click',function(){
   done[k.n]=1;save();
 });
 function next(){
-  var k=KES[cur],same=KES.filter(function(x){return x.set===k.set}),idx=same.indexOf(k);
+  var k=KES[cur],same=KES,idx=same.indexOf(k);
   var nx=same.slice(idx+1).concat(same.slice(0,idx)).filter(function(x){return !done[x.n]})[0];
   if(nx){open(KES.indexOf(nx))}else{goHome()}
 }
