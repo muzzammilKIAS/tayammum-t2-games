@@ -80,7 +80,7 @@ test('set guru: soalan tetap, jawapan sah selepas rombak, susun ayat dan mod sel
   }
   assert.equal(questionsForSet('tayammum-klinik').length, 12);
   assert.ok(qs.some(q => q.type === 'arrange'), 'set mesti ada soalan susun');
-  assert.equal(questionsForSet('tayammum-tebus').length, 10);
+  assert.equal(questionsForSet('tayammum-tebus').length, 12);
   // Mod selamat: tiada bonus kelajuan, jawapan pantas dan perlahan dapat markah sama.
   const fast = newPlayer(), slow = newPlayer();
   recordAnswer(fast, qs, qs[0].id, qs[0].answer, { elapsedMs: 500, calm: true });

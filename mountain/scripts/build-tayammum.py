@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-BANK = ROOT.parent / "00_bank" / "bank_tayammum.json"
+BANK = next(p for p in (ROOT.parent / "bank" / "bank_tayammum.json", ROOT.parent / "00_bank" / "bank_tayammum.json") if p.exists())
 TOPIC_TITLE = "Tayammum"
 FLAG = re.compile(r"\s*\[SAHKAN[^\]]*\]")
 

@@ -1,6 +1,6 @@
 # Pendakian Tayammum (Tingkatan 2)
 
-Game pendakian gunung berasaskan **Tayammum** (Tingkatan 2, DSKP KSSM SK 4.10). Mekanik game (gunung, avatar, sesi langsung, mod selamat, analitik, CSV) dikekalkan. Jenama, UI dan kandungan kini sepenuhnya Tayammum dalam Bahasa Melayu; tiada lagi mod 7 level / 12 topik kosa kata Arab. Sumber soalan tunggal: `../00_bank/bank_tayammum.json` (38 soalan). Projek asal tidak disentuh.
+Game pendakian gunung berasaskan **Tayammum** (Tingkatan 2, DSKP KSSM SK 4.10). Mekanik game (gunung, avatar, sesi langsung, mod selamat, analitik, CSV) dikekalkan. Jenama, UI dan kandungan kini sepenuhnya Tayammum dalam Bahasa Melayu; tiada lagi mod 7 level / 12 topik kosa kata Arab. Sumber soalan tunggal: `../00_bank/bank_tayammum.json` (40 soalan). Projek asal tidak disentuh.
 
 ## Jana semula soalan
 `python3 scripts/build-tayammum.py` menulis `content/sets.json` (tiga set sahaja; set akhlak lama dibuang).

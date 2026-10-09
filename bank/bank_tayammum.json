@@ -147,15 +147,15 @@
   "id": "A10",
   "set": "asas",
   "type": "mcq",
-  "q": "Sapuan debu pada kedua-dua tangan hendaklah sampai …",
+  "q": "Berapakah bilangan rukun tayammum?",
   "options": [
-   "Siku",
-   "Pergelangan tangan",
-   "Bahu",
-   "Hujung jari sahaja"
+   "Empat: niat, menyapu debu tanah ke muka, menyapu debu tanah ke tangan dan tertib",
+   "Dua: menyapu muka dan tangan",
+   "Enam: seperti rukun wuduk",
+   "Sembilan: seperti sunat tayammum"
   ],
   "answer": 0,
-  "explanation": "Mengikut mazhab Syafie, tangan disapu sehingga siku. [SAHKAN dengan buku teks]",
+  "explanation": "Menurut buku teks, rukun tayammum ada empat: niat, menyapu debu tanah ke muka, menyapu debu tanah ke tangan dan tertib.",
   "sk": "4.10.4",
   "kbat": false
  },
@@ -179,16 +179,14 @@
   "id": "A12",
   "set": "asas",
   "type": "arrange",
-  "q": "Susun langkah bertayammum dengan betul",
+  "q": "Susun rukun tayammum mengikut tertib",
   "sequence": [
-   "Berniat dalam hati",
-   "Menepuk tapak tangan pada debu",
-   "Menyapu muka",
-   "Menepuk tapak tangan pada debu semula",
-   "Menyapu tangan hingga siku"
+   "Niat dalam hati",
+   "Menyapu debu tanah ke muka",
+   "Menyapu debu tanah ke tangan"
   ],
-  "explanation": "Urutan: niat, tepuk debu, sapu muka, tepuk debu semula, sapu tangan hingga siku. [SAHKAN status tepukan kali kedua dengan buku teks]",
-  "sk": "4.10.8",
+  "explanation": "Tertib rukun: niat, menyapu debu tanah ke muka, kemudian menyapu debu tanah ke tangan.",
+  "sk": "4.10.4",
   "kbat": false
  },
  {
@@ -258,32 +256,30 @@
  {
   "id": "T01",
   "set": "tebus",
-  "type": "mcq",
-  "q": "Langkah PERTAMA bertayammum ialah …",
-  "options": [
-   "Berniat dalam hati",
-   "Menyapu tangan",
-   "Menyapu muka",
-   "Menepuk kaki"
+  "type": "arrange",
+  "q": "Kad Langkah 1 hingga 4: susun mengikut cara bertayammum",
+  "sequence": [
+   "Membaca basmalah",
+   "Niat dalam hati",
+   "Merenggangkan jari ketika menepuk debu tanah",
+   "Menipiskan debu dengan melaga-lagakan kedua-dua belah tangan"
   ],
-  "answer": 0,
-  "explanation": "Bermula dengan niat dalam hati.",
+  "explanation": "Mengikut carta buku teks: membaca basmalah, niat dalam hati, merenggangkan jari ketika menepuk debu tanah, kemudian menipiskan debu.",
   "sk": "4.10.8",
   "kbat": false
  },
  {
   "id": "T02",
   "set": "tebus",
-  "type": "mcq",
-  "q": "Selepas berniat, kita …",
-  "options": [
-   "Menepuk tapak tangan pada debu yang suci",
-   "Terus menyapu tangan",
-   "Terus bersolat",
-   "Membasuh muka dengan air"
+  "type": "arrange",
+  "q": "Kad Langkah 5 hingga 8: susun mengikut cara bertayammum",
+  "sequence": [
+   "Menyapu debu tanah ke muka",
+   "Menepuk dan menipiskan debu sekali lagi",
+   "Menyapu debu tanah ke tangan",
+   "Berdoa dengan doa selepas wuduk atau tayammum"
   ],
-  "answer": 0,
-  "explanation": "Tapak tangan ditepuk pada debu tanah yang suci.",
+  "explanation": "Selepas menyapu muka, debu ditepuk dan ditipiskan sekali lagi, kemudian tangan disapu dan akhirnya berdoa.",
   "sk": "4.10.8",
   "kbat": false
  },
@@ -291,15 +287,15 @@
   "id": "T03",
   "set": "tebus",
   "type": "mcq",
-  "q": "Selepas menepuk debu, anggota yang disapu dahulu ialah …",
+  "q": "Langkah PERTAMA dalam cara bertayammum ialah …",
   "options": [
-   "Muka",
-   "Tangan",
-   "Kaki",
-   "Kepala"
+   "Membaca basmalah",
+   "Menyapu tangan",
+   "Menyapu muka",
+   "Berdoa"
   ],
   "answer": 0,
-  "explanation": "Muka disapu dahulu.",
+  "explanation": "Cara bertayammum dalam buku teks bermula dengan membaca basmalah (sunat), kemudian niat dalam hati (rukun).",
   "sk": "4.10.8",
   "kbat": false
  },
@@ -307,15 +303,15 @@
   "id": "T04",
   "set": "tebus",
   "type": "mcq",
-  "q": "Tangan disapu sehingga …",
+  "q": "Selepas membaca basmalah, kita …",
   "options": [
-   "Siku",
-   "Bahu",
-   "Jari",
-   "Lutut"
+   "Berniat dalam hati",
+   "Terus menyapu tangan",
+   "Terus bersolat",
+   "Membasuh muka dengan air"
   ],
   "answer": 0,
-  "explanation": "Kedua-dua tangan disapu hingga ke siku.",
+  "explanation": "Niat dalam hati ialah rukun pertama tayammum.",
   "sk": "4.10.8",
   "kbat": false
  },
@@ -323,48 +319,48 @@
   "id": "T05",
   "set": "tebus",
   "type": "mcq",
-  "q": "Apakah anggota yang disapu semasa tayammum?",
+  "q": "Ketika menepuk debu tanah, jari tangan hendaklah …",
   "options": [
-   "Muka dan tangan",
-   "Kepala dan kaki",
-   "Telinga dan leher",
-   "Perut dan dada"
+   "Direnggangkan",
+   "Digenggam",
+   "Dirapatkan dengan kuat",
+   "Dibasahkan dahulu"
   ],
   "answer": 0,
-  "explanation": "Hanya muka dan kedua-dua tangan.",
-  "sk": "4.10.4",
+  "explanation": "Merenggangkan jari tangan ketika menepuk debu tanah ialah sunat tayammum.",
+  "sk": "4.10.5",
   "kbat": false
  },
  {
   "id": "T06",
   "set": "tebus",
   "type": "mcq",
-  "q": "Contoh debu yang BOLEH digunakan ialah …",
+  "q": "Bagaimanakah cara menipiskan debu di tapak tangan?",
   "options": [
-   "Debu tanah yang bersih",
-   "Tepung roti",
-   "Kapur",
-   "Gula"
+   "Melaga-lagakan kedua-dua belah tangan",
+   "Meniup debu dengan kuat",
+   "Membasuh tangan dengan air",
+   "Menggosok tangan pada baju"
   ],
   "answer": 0,
-  "explanation": "Gunakan debu tanah yang suci dan tidak bercampur.",
-  "sk": "4.10.3",
+  "explanation": "Debu ditipiskan dengan melaga-lagakan kedua-dua belah tangan (sunat).",
+  "sk": "4.10.5",
   "kbat": false
  },
  {
   "id": "T07",
   "set": "tebus",
   "type": "mcq",
-  "q": "Situasi manakah tayammum DIHARUSKAN?",
+  "q": "Semasa menyapu kedua-dua tangan, tangan yang didahulukan ialah …",
   "options": [
-   "Tiada air selepas puas dicari",
-   "Air ada tetapi malas berwuduk",
-   "Air ada banyak di paip",
-   "Masih awal sebelum waktu solat"
+   "Tangan kanan",
+   "Tangan kiri",
+   "Mana-mana tangan",
+   "Kedua-duanya serentak sahaja"
   ],
   "answer": 0,
-  "explanation": "Tayammum diharuskan apabila ada sebab sebenar seperti tiada air.",
-  "sk": "4.10.2",
+  "explanation": "Mendahulukan tangan sebelah kanan ialah sunat tayammum.",
+  "sk": "4.10.5",
   "kbat": false
  },
  {
@@ -376,41 +372,75 @@
    "Batal",
    "Masih sah",
    "Tidak berubah",
-   "Menjadi wajib sunat"
+   "Menjadi sunat"
   ],
   "answer": 0,
-  "explanation": "Ada air sebelum solat dimulakan membatalkan tayammum.",
+  "explanation": "Ada air sebelum solat dimulakan ialah perkara yang membatalkan tayammum.",
   "sk": "4.10.6",
   "kbat": false
  },
  {
   "id": "T09",
   "set": "tebus",
-  "type": "arrange",
-  "q": "Susun tiga langkah mudah bertayammum",
-  "sequence": [
-   "Berniat",
-   "Sapu muka",
-   "Sapu tangan"
+  "type": "mcq",
+  "q": "Antara berikut, yang manakah RUKUN tayammum?",
+  "options": [
+   "Menyapu debu tanah ke muka",
+   "Membaca basmalah",
+   "Merenggangkan jari",
+   "Berdoa selepas tayammum"
   ],
-  "explanation": "Niat, sapu muka, kemudian sapu tangan.",
-  "sk": "4.10.8",
+  "answer": 0,
+  "explanation": "Rukun tayammum ialah niat, menyapu debu tanah ke muka, menyapu debu tanah ke tangan dan tertib. Yang lain ialah sunat.",
+  "sk": "4.10.4",
   "kbat": false
  },
  {
   "id": "T10",
   "set": "tebus",
   "type": "mcq",
-  "q": "Padankan: tayammum ialah ganti kepada …",
+  "q": "Bahan manakah yang BOLEH digunakan untuk bertayammum?",
   "options": [
-   "Wuduk dan mandi wajib",
-   "Solat",
-   "Puasa",
-   "Sedekah"
+   "Debu tanah yang kering dan bersih",
+   "Tepung",
+   "Kapur",
+   "Abu"
   ],
   "answer": 0,
-  "explanation": "Tayammum menggantikan wuduk dan mandi wajib.",
-  "sk": "4.10.1",
+  "explanation": "Debu mestilah tanah yang berdebu, suci, tidak musta'mal dan tidak bercampur dengan bahan lain.",
+  "sk": "4.10.3",
+  "kbat": false
+ },
+ {
+  "id": "T11",
+  "set": "tebus",
+  "type": "mcq",
+  "q": "Mengapakah abu TIDAK boleh digunakan untuk bertayammum?",
+  "options": [
+   "Kerana debu mestilah tanah yang berdebu dan bukan abu",
+   "Kerana abu terlalu berat",
+   "Kerana abu berwarna hitam",
+   "Kerana abu mahal"
+  ],
+  "answer": 0,
+  "explanation": "Syarat debu dalam buku teks: tanah yang berdebu dan bukan abu.",
+  "sk": "4.10.3",
+  "kbat": false
+ },
+ {
+  "id": "T12",
+  "set": "tebus",
+  "type": "mcq",
+  "q": "Debu yang sudah melekat pada muka dan jatuh semula ke dalam dulang …",
+  "options": [
+   "Tidak boleh digunakan lagi kerana musta'mal",
+   "Boleh digunakan semula",
+   "Lebih baik digunakan",
+   "Wajib digunakan semula"
+  ],
+  "answer": 0,
+  "explanation": "Debu yang sudah digunakan dipanggil musta'mal dan tidak boleh digunakan untuk bertayammum.",
+  "sk": "4.10.3",
   "kbat": false
  },
  {
@@ -449,16 +479,16 @@
   "id": "K03",
   "set": "klinik",
   "type": "mcq",
-  "q": "Siti bertayammum untuk solat Asar. Selepas itu dia mahu menunaikan solat Maghrib dengan tayammum yang sama. Apakah keputusannya?",
+  "q": "Amir sedang berkhemah dan tiada air. Dia bertayammum menggunakan abu daripada unggun api. Apakah keputusannya?",
   "options": [
-   "Tidak boleh; satu tayammum untuk satu solat fardu",
-   "Boleh kerana tayammumnya belum batal",
-   "Boleh jika dia berniat semula dalam hati sahaja",
-   "Boleh hanya untuk solat yang tiga rakaat"
+   "Tidak sah kerana debu mestilah tanah yang berdebu dan bukan abu",
+   "Sah kerana abu juga halus",
+   "Sah kerana dia sedang berkhemah",
+   "Sah jika abunya sudah sejuk"
   ],
   "answer": 0,
-  "explanation": "Mengikut mazhab Syafie, satu tayammum untuk satu solat fardu (dan solat sunat yang dikehendaki). [SAHKAN dengan buku teks]",
-  "sk": "4.10.6",
+  "explanation": "Syarat debu dalam buku teks: tanah yang berdebu dan bukan abu.",
+  "sk": "4.10.3",
   "kbat": true
  },
  {
@@ -545,16 +575,16 @@
   "id": "K09",
   "set": "klinik",
   "type": "mcq",
-  "q": "Aisyah menyapu muka dan kedua-dua tangannya hanya sampai pergelangan tangan. Apakah penilaian terbaik?",
+  "q": "Hana mendapati ada najis pada tangannya, tetapi dia terus bertayammum tanpa menghilangkannya. Apakah keputusannya?",
   "options": [
-   "Tidak sempurna kerana tangan mesti disapu hingga siku",
-   "Sempurna kerana tangan sudah disapu",
-   "Sempurna kerana muka sudah disapu",
-   "Sempurna jika debunya banyak"
+   "Tidak sah kerana najis mesti dihilangkan terlebih dahulu",
+   "Sah kerana debu menyucikan najis",
+   "Sah jika najisnya sedikit",
+   "Sah jika dia berniat dengan ikhlas"
   ],
   "answer": 0,
-  "explanation": "Had sapuan tangan ialah hingga siku. [SAHKAN dengan buku teks]",
-  "sk": "4.10.4",
+  "explanation": "Menghilangkan najis terlebih dahulu ialah syarat tayammum.",
+  "sk": "4.10.3",
   "kbat": true
  },
  {
@@ -577,16 +607,16 @@
   "id": "K11",
   "set": "klinik",
   "type": "mcq",
-  "q": "Selepas solat Zohor dengan tayammum, Imran mahu solat sunat rawatib dengan tayammum yang sama dan tayammumnya belum batal. Apakah penilaian yang tepat?",
+  "q": "Faiz mengambil debu yang jatuh dari muka rakannya selepas rakannya bertayammum, lalu menggunakannya untuk bertayammum. Apakah keputusannya?",
   "options": [
-   "Boleh kerana solat sunat boleh dilakukan dengan tayammum solat fardu",
-   "Tidak boleh kerana tayammum hanya untuk satu solat sahaja",
-   "Boleh hanya selepas Isyak",
-   "Tidak boleh kerana mesti diulang"
+   "Tidak sah kerana debu itu musta'mal",
+   "Sah kerana debu itu masih suci",
+   "Sah kerana debu itu tanah",
+   "Sah jika rakannya membenarkan"
   ],
   "answer": 0,
-  "explanation": "Mengikut mazhab Syafie, satu tayammum untuk satu solat fardu dan solat sunat yang dikehendaki. [SAHKAN dengan buku teks]",
-  "sk": "4.10.6",
+  "explanation": "Debu yang sudah digunakan (musta'mal) tidak boleh digunakan untuk bertayammum.",
+  "sk": "4.10.3",
   "kbat": true
  },
  {

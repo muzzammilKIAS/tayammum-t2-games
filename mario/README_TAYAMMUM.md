@@ -3,7 +3,7 @@
 Game solo dan mod kelas langsung untuk pelajar Tingkatan 2, Pendidikan Islam, DSKP KSSM SK 4.10 (Tayammum).
 Dibina daripada modul Adventure/Flame aplikasi UMT3033. Mekanik dan seni kekal;
 soalan pada pintu soalan diambil daripada `assets/data/bank_tayammum.json`
-(38 soalan). Solo tidak memerlukan pelayan; mod kelas langsung memerlukan pelayan WebSocket (`server/`).
+(40 soalan). Solo tidak memerlukan pelayan; mod kelas langsung memerlukan pelayan WebSocket (`server/`).
 
 ## Bina dan jalankan
 ```

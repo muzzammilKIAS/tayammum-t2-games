@@ -1,4 +1,4 @@
-import"./modulepreload-polyfill-B5Qt9EMX.js";import{a as $,e as c,f as m,$ as o,s as k,t as y,r as w,b as M,c as u}from"./avatar-ByKK7Tnl.js";import{c as W}from"./net-CnuDlwTL.js";import{c as X,T as Z}from"./mountain-C5UFiEG7.js";import{s as P}from"./sets-BTY_ZdWS.js";const D={"multiple-choice":"Pilih jawapan",arrange:"Susun langkah"};function H(a,{removable:s=!1}={}){return a.players.map(t=>`<tr class="${t.finished?"is-done":""}">
+import"./modulepreload-polyfill-B5Qt9EMX.js";import{a as $,e as c,f as m,$ as o,s as k,t as y,r as w,b as M,c as u}from"./avatar-ByKK7Tnl.js";import{c as W}from"./net-CnuDlwTL.js";import{c as X,T as Z}from"./mountain-2n2LnKXN.js";import{s as P}from"./sets-DatxNfLK.js";const D={"multiple-choice":"Pilih jawapan",arrange:"Susun langkah"};function H(a,{removable:s=!1}={}){return a.players.map(t=>`<tr class="${t.finished?"is-done":""}">
     <td><span class="rk r${t.rank}">${t.rank}</span></td>
     <td><span class="who"><span class="mb-av">${$(t.avatar,{crop:"head",label:""})}</span>${c(t.name)}</span></td>
     <td><span class="alt-bar"><i style="width:${Math.round(t.correct/a.total*100)}%"></i></span>${m(t.altitude)} m</td>

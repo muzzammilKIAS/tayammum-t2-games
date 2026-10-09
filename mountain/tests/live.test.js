@@ -45,7 +45,7 @@ test('host → 5 pemain → mendaki langsung → puncak → host muat semula', a
   const fa = await call(A.s, 'answer', { id: qs[0].id, answer: answerFor(code, qs[0]) });
   assert.equal(fa.feedback.correct, true);
   let room = await upd;
-  assert.equal(room.players.find(p => p.id === A.id).altitude, 300);
+  assert.equal(room.players.find(p => p.id === A.id).altitude, 250);
   assert.ok(room.players.filter(p => p.id !== A.id).every(p => p.correct === 0), 'hanya A bergerak');
 
   const fb = await call(B.s, 'answer', { id: qs[1].id, answer: wrongFor(code, qs[1]) });
@@ -59,7 +59,8 @@ test('host → 5 pemain → mendaki langsung → puncak → host muat semula', a
   assert.equal(room.players[0].id === A.id || room.players[0].id === C.id, true, 'kedudukan dikemas kini');
 
   // A menjawab semua dengan betul hingga ke puncak
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < 12; i++) { // set tebus: 12 soalan
+    if (i === 6) await new Promise(r => setTimeout(r, 1100)); // had pelayan: 20 permintaan sesaat
     const w = next(A.s, 'question'); await call(A.s, 'next'); const q = await w;
     await call(A.s, 'answer', { id: q.id, answer: answerFor(code, q) });
   }

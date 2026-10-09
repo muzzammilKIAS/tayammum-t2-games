@@ -28,7 +28,7 @@ void main() {
     'level 1/2/3 memulangkan set asas/tebus/klinik daripada bank Tayammum',
     () {
       final bank = QuestionBank();
-      const expected = {1: 16, 2: 10, 3: 12};
+      const expected = {1: 16, 2: 12, 3: 12};
       const sets = {1: 'asas', 2: 'tebus', 3: 'klinik'};
       expect(adventureLevels.length, 3);
       var total = 0;
