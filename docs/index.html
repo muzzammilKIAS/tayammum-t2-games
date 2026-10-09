@@ -104,7 +104,8 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.85rem}
 
 <nav class="tabs" aria-label="Bahagian halaman">
  <div class="wrap">
-  <a href="#pelajar">Pelajar</a>
+  <a href="#kelas">Cop Fiqah</a>
+  <a href="#pelajar">Ulang kaji</a>
   <a href="#guru">Guru</a>
   <a href="#kumpulan">Pembahagian kumpulan</a>
   <a href="#pautan">Pautan dan QR</a>
@@ -113,9 +114,20 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.85rem}
 
 <main class="wrap">
 
+<section id="kelas" aria-labelledby="h-kelas">
+ <h2 id="h-kelas">Untuk kelas: Cop Fiqah</h2>
+ <p class="hint">Aktiviti pengayaan dalam pengajaran 15 minit. Satu tablet atau laptop di meja pengayaan sudah cukup.</p>
+ <article class="card">
+  <span class="tag">Pengayaan</span>
+  <h3>Cop Fiqah: Sah atau Tidak Sah?</h3>
+  <p>Lapan kes daripada buku teks. Pasangan baca kes, cop SAH atau TIDAK SAH pada laporan dan tulis alasan, kemudian ketik Semak untuk melihat jawapan dan alasan buku teks. Tiada log masuk, kod atau papan markah.</p>
+  <div class="row"><a class="btn" href="cop-fiqah/">Buka Cop Fiqah</a><button class="btn alt" data-qr="cop-fiqah" data-title="Cop Fiqah">QR</button></div>
+ </article>
+</section>
+
 <section id="pelajar" aria-labelledby="h-pelajar">
- <h2 id="h-pelajar">Pilih permainan</h2>
- <p class="hint">Buka di telefon atau komputer. Tiada log masuk diperlukan.</p>
+ <h2 id="h-pelajar">Ulang kaji di rumah</h2>
+ <p class="hint">Dua permainan untuk ulang kaji kendiri. Buka di telefon atau komputer. Tiada log masuk diperlukan.</p>
  <div class="grid two">
 
   <article class="card">
@@ -196,6 +208,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.85rem}
  <div class="grid two">
   <article class="card">
    <div class="set"><div><b>Dashboard ini</b></div><div class="row"><button class="btn alt small" data-copy="">Salin</button><button class="btn alt small" data-qr="dashboard" data-title="Dashboard">QR</button></div></div>
+   <div class="set"><div><b>Cop Fiqah</b></div><div class="row"><button class="btn alt small" data-copy="cop-fiqah/">Salin</button><button class="btn alt small" data-qr="cop-fiqah" data-title="Cop Fiqah">QR</button></div></div>
    <div class="set"><div><b>Pendakian &middot; Asas</b></div><div class="row"><button class="btn alt small" data-copy="mountain/solo.html?set=tayammum-asas">Salin</button><button class="btn alt small" data-qr="mountain-asas" data-title="Pendakian: Asas">QR</button></div></div>
    <div class="set"><div><b>Pendakian &middot; Tebus</b></div><div class="row"><button class="btn alt small" data-copy="mountain/solo.html?set=tayammum-tebus">Salin</button><button class="btn alt small" data-qr="mountain-tebus" data-title="Pendakian: Tebus">QR</button></div></div>
   </article>
@@ -239,7 +252,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.85rem}
       var k = b.getAttribute('data-qr');
       document.getElementById('qrTitle').textContent = b.getAttribute('data-title');
       document.getElementById('qrImg').src = 'qr/' + k + '.svg';
-      var m = { 'dashboard':'', 'mountain-asas':'mountain/solo.html?set=tayammum-asas', 'mountain-tebus':'mountain/solo.html?set=tayammum-tebus', 'mountain-klinik':'mountain/solo.html?set=tayammum-klinik', 'mario':'mario/' };
+      var m = { 'dashboard':'', 'mountain-asas':'mountain/solo.html?set=tayammum-asas', 'mountain-tebus':'mountain/solo.html?set=tayammum-tebus', 'mountain-klinik':'mountain/solo.html?set=tayammum-klinik', 'mario':'mario/', 'cop-fiqah':'cop-fiqah/' };
       document.getElementById('qrUrl').textContent = abs(m[k]);
       if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
     });
